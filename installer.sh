@@ -1,44 +1,48 @@
 #!/bin/bash
 
 RED="\e[31m"
-GREEN="\e[32m"
-YELLOW="\e[33m"
-BLUE="\e[34m"
-MAGENTA="\e[35m"
-CYAN="\e[36m"
+YELLOW="\e[1;33m"
 WHITE="\e[97m"
 BOLD="\e[1m"
 RESET="\e[0m"
 
+REPO="https://raw.githubusercontent.com/ejaywattapak/grimjow/main/setup.sh"
+
 clear
+printf '%b\n' "${YELLOW}${BOLD}╔════════════════════════════════════════════════════════╗${RESET}"
+printf '%b\n' "${YELLOW}${BOLD}║             AUTOSCRIPT BY EJAYWATTAPAK                ║${RESET}"
+printf '%b\n' "${YELLOW}${BOLD}╠════════════════════════════════════════════════════════╣${RESET}"
+printf '%b\n' "${YELLOW}${BOLD}║                 XRAY / SSH WEBSOCKET                  ║${RESET}"
+printf '%b\n' "${YELLOW}${BOLD}╚════════════════════════════════════════════════════════╝${RESET}"
+printf '\n'
 
-# ============================================================
-# Yellow double-line header — 58 columns, aligned
-# ============================================================
-echo -e "${YELLOW}${BOLD}╔════════════════════════════════════════════════════════╗${RESET}"
-echo -e "${YELLOW}${BOLD}║             AUTOSCRIPT BY EJAYWATTAPAK                ║${RESET}"
-echo -e "${YELLOW}${BOLD}╠════════════════════════════════════════════════════════╣${RESET}"
-echo -e "${YELLOW}${BOLD}║                 XRAY / SSH WEBSOCKET                  ║${RESET}"
-echo -e "${YELLOW}${BOLD}╚════════════════════════════════════════════════════════╝${RESET}"
-echo
+# Remove the obsolete Ookla packagecloud repository before any apt update.
+sed -i '/packagecloud\.io\/ookla\/speedtest-cli/d' /etc/apt/sources.list 2>/dev/null || true
+for f in /etc/apt/sources.list.d/*; do
+    [ -f "$f" ] || continue
+    grep -q 'packagecloud\.io/ookla/speedtest-cli' "$f" 2>/dev/null || continue
+    rm -f "$f"
+done
 
-# Auto install setup.sh — no option/menu.
-apt update -y && \
-apt upgrade -y && \
-apt dist-upgrade -y && \
-apt update && \
-apt install -y bzip2 gzip coreutils screen wget curl && \
-wget -O setup.sh https://raw.githubusercontent.com/ejaywattapak/grimjow/main/setup.sh && \
+# Refresh package lists first, then restore coreutils in case an older
+# installation overwrote /usr/bin/test with banner-font text.
+apt-get update -y && \
+apt-get install --reinstall -y coreutils && \
+apt-get upgrade -y && \
+apt-get dist-upgrade -y && \
+apt-get update -y && \
+apt-get install -y bzip2 gzip coreutils screen wget curl && \
+wget -O setup.sh "$REPO" && \
 chmod +x setup.sh && \
 sed -i -e 's/\r$//' setup.sh && \
 ./setup.sh
 
-exit_code=$?
-
-if [ "$exit_code" -ne 0 ]; then
-    echo
-    echo -e "${RED}${BOLD}Installer gagal menjalankan setup.sh (exit code: ${exit_code}).${RESET}"
-    exit "$exit_code"
+status=$?
+echo
+if [ "$status" -ne 0 ]; then
+    echo -e "${RED}${BOLD}Installer gagal menjalankan setup.sh (exit code: $status).${RESET}"
+    exit "$status"
 fi
 
+echo -e "${YELLOW}${BOLD}setup.sh telah dijalankan.${RESET}"
 exit 0
