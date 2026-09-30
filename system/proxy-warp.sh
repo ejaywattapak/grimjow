@@ -16,11 +16,11 @@ WG_PRIVATE_KEY=""; WG_ADDRESS=""; WG_PUBLIC_KEY=""; WG_ALLOWED_IPS=""
 WG_ENDPOINT=""; WG_MTU="1280"; WG_PRESHARED_KEY=""; WG_KEEPALIVE="0"
 WG_RESERVED=""; WG_NO_KERNEL_TUN="true"; WG_DOMAIN_STRATEGY="ForceIP"
 
-RESET="\e[0m"; BOLD="\e[1m"; DIM="\e[2m"; WHITE="\e[1;97m"
-GREEN="\e[38;5;220m"; YELLOW="\e[1;38;5;220m"; ORANGE="\e[1;38;5;214m"
-RED="\e[38;5;220m"; CYAN="\e[1;38;5;117m"; PINK="\e[38;5;252m"
-BLUE="\e[38;5;252m"; TEAL="\e[38;5;252m"; LIME="\e[38;5;220m"
-VIOLET="\e[1;38;5;214m"; GOLD="\e[1;38;5;214m"; GREY="\e[38;5;252m"
+RESET="\e[0m"; BOLD="\e[1m"; DIM="\e[2m"; WHITE="\e[97m"
+GREEN="\e[92m"; YELLOW="\e[93m"; ORANGE="\e[38;5;208m"
+RED="\e[91m"; CYAN="\e[96m"; PINK="\e[38;5;213m"
+BLUE="\e[38;5;39m"; TEAL="\e[38;5;44m"; LIME="\e[38;5;154m"
+VIOLET="\e[38;5;141m"; GOLD="\e[38;5;220m"; GREY="\e[38;5;245m"
 
 die(){ echo -e "\n${RED}[ERROR]${RESET} $*\n"; exit 1; }
 ok(){  echo -e "${GREEN}[OK]${RESET} $*"; }
