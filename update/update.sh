@@ -18,15 +18,15 @@ back_text=$(cat /etc/back)
 number=$(cat /etc/number)
 # TEXT ON BOX COLOUR
 box=$(cat /etc/box)
-RED='\e[1;31m'
-GREEN='\e[0;32m'
-BLUE='\e[0;34m'
+RED='\e[1;38;5;220m'
+GREEN='\e[38;5;252m'
+BLUE='\e[38;5;117m'
 NC='\e[0m'
 version=$(cat /home/ver)
 ver=$( curl https://raw.githubusercontent.com/${GitUser}/version/main/version.conf )
 clear
 # CEK UPDATE
-Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_prefix="\033[42;37m" && Red_background_prefix="\033[41;37m" && Font_color_suffix="\033[0m"
+Green_font_prefix="\e[38;5;252m" && Red_font_prefix="\e[38;5;220m" && Green_background_prefix="\e[48;5;236m\e[97m" && Red_background_prefix="\e[48;5;236m\e[97m" && Font_color_suffix="\e[0m"
 Info1="${Green_font_prefix}[$version]${Font_color_suffix}"
 Info2="${Green_font_prefix}[LATEST VERSION]${Font_color_suffix}"
 Error="Version ${Green_font_prefix}[$ver]${Font_color_suffix} available${Red_font_prefix}[Please Update]${Font_color_suffix}"
@@ -71,7 +71,7 @@ menu
 ;;
 *)
 clear
-echo -e "\e[1;31mPlease enter an correct number, Try again.\e[0m"
+echo -e "\e[1;38;5;220mPlease enter an correct number, Try again.\e[0m"
 sleep 2
 update
 ;;

@@ -23,7 +23,7 @@ number=$(cat /etc/number)
 # TEXT ON BOX COLOUR
 box=$(cat /etc/box)
 # CEK UPDATE
-Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_prefix="\033[42;37m" && Red_background_prefix="\033[41;37m" && Font_color_suffix="\033[0m"
+Green_font_prefix="\e[38;5;252m" && Red_font_prefix="\e[38;5;220m" && Green_background_prefix="\e[48;5;236m\e[97m" && Red_background_prefix="\e[48;5;236m\e[97m" && Font_color_suffix="\e[0m"
 Info1="${Green_font_prefix}($version)${Font_color_suffix}"
 Info2="${Green_font_prefix}(LATEST VERSION)${Font_color_suffix}"
 Error="Version ${Green_font_prefix}[$ver]${Font_color_suffix} available${Red_font_prefix}[Please Update]${Font_color_suffix}"
@@ -43,9 +43,9 @@ echo -e "   \e[$line--------------------------------------------------------\e[m
 echo -e "   \e[$below VERSION NOW >> $Info1"
 echo -e "   \e[$below STATUS UPDATE >> $sts"
 echo -e ""
-echo -e "       \e[1;31mWould you like to proceed?\e[0m"
+echo -e "       \e[1;97mWould you like to proceed?\e[0m"
 echo ""
-echo -e "            \e[0;32m[ Select Option ]\033[0m"
+echo -e "            \e[1;38;5;214m[ Select Option ]\e[0m"
 echo -e "     \e[$number [1]\e[m \e[$below Check Script Update Now\e[m"
 echo -e "     \e[$number [x]\e[m \e[$below Back To Update Menu\e[m"
 echo -e "     \e[$number [y]\e[m \e[$below Back To Main Menu\e[m"
@@ -60,26 +60,26 @@ new_version=$( curl https://raw.githubusercontent.com/${GitUser}/version/main/ve
 if [ $version = $new_version ]; then
 clear
 echo ""
-echo -e "\e[1;31mChecking New Version, Please Wait...!\e[m"
+echo -e "\e[38;5;252mChecking New Version, Please Wait...!\e[0m"
 sleep 3
 clear
-echo -e "\e[1;31mUpdate Not Available\e[m"
+echo -e "\e[1;38;5;220mUpdate Not Available\e[m"
 echo ""
 clear
 sleep 1
-echo -e "\e[1;36mYou Have The Latest Version\e[m"
-echo -e "\e[1;31mThankyou.\e[0m"
+echo -e "\e[1;38;5;117mYou Have The Latest Version\e[m"
+echo -e "\e[1;38;5;220mThankyou.\e[0m"
 sleep 2
 update
 fi
 clear
-echo -e "\e[1;31mUpdate Available Now..\e[m"
+echo -e "\e[1;38;5;220mUpdate Available Now..\e[m"
 echo -e ""
 sleep 2
-echo -e "\e[1;36mStart Update For New Version, Please Wait..\e[m"
+echo -e "\e[1;38;5;117mStart Update For New Version, Please Wait..\e[m"
 sleep 2
 clear
-echo -e "\e[0;32mGetting New Version Script..\e[0m"
+echo -e "\e[38;5;252mGetting New Version Script..\e[0m"
 sleep 1
 echo ""
 # UPDATE RUN-UPDATE
@@ -89,11 +89,11 @@ chmod +x run-update
 # RUN UPDATE
 echo ""
 clear
-echo -e "\e[0;32mPlease Wait...!\e[0m"
+echo -e "\e[38;5;252mPlease Wait...!\e[0m"
 sleep 6
 clear
 echo ""
-echo -e "\e[0;32mNew Version Downloading started!\e[0m"
+echo -e "\e[38;5;252mNew Version Downloading started!\e[0m"
 sleep 2
 cd /usr/bin
 wget -O update "https://raw.githubusercontent.com/${GitUser}/grimjow/main/update/update.sh"
@@ -134,25 +134,25 @@ chmod +x bckp
 chmod +x restore
 clear
 echo -e ""
-echo -e "\e[0;32mDownloaded successfully!\e[0m"
+echo -e "\e[38;5;252mDownloaded successfully!\e[0m"
 echo ""
 ver=$( curl https://raw.githubusercontent.com/${GitUser}/version/main/version.conf )
 sleep 1
-echo -e "\e[0;32mPatching New Update, Please Wait...\e[0m"
+echo -e "\e[38;5;252mPatching New Update, Please Wait...\e[0m"
 echo ""
 sleep 2
-echo -e "\e[0;32mPatching... OK!\e[0m"
+echo -e "\e[38;5;252mPatching... OK!\e[0m"
 sleep 1
 echo ""
-echo -e "\e[0;32mSucces Update Script For New Version\e[0m"
+echo -e "\e[38;5;252mSucces Update Script For New Version\e[0m"
 cd
 echo "$ver" > /home/ver
 rm -f update.sh
 clear
 echo ""
-echo -e "\033[0;34m----------------------------------------\033[0m"
-echo -e "\E[44;1;39m            SCRIPT UPDATED              \E[0m"
-echo -e "\033[0;34m----------------------------------------\033[0m"
+echo -e "\e[38;5;117m----------------------------------------\e[0m"
+echo -e "\e[48;5;236m            SCRIPT UPDATED              \e[0m"
+echo -e "\e[38;5;117m----------------------------------------\e[0m"
 echo ""
 read -n 1 -s -r -p "Press any key to back on menu"
 menu
@@ -167,7 +167,7 @@ menu
 ;;
 *)
 clear
-echo -e "\e[1;31mPlease Enter Option 1-2 or x & y Only..,Try again, Thank You..\e[0m"
+echo -e "\e[1;38;5;220mPlease Enter Option 1-2 or x & y Only..,Try again, Thank You..\e[0m"
 sleep 2
 run-update
 ;;
