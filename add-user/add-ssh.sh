@@ -24,11 +24,11 @@ echo -e   "  \e[$line═══════════════════�
 while true; do
     read -p "   Username : " Login
     if [[ -z "$Login" ]]; then
-        echo -e "\e[31mUsername tak boleh kosong. Sila masukkan semula.\e[0m"
+        echo -e "\e[38;5;220mUsername tak boleh kosong. Sila masukkan semula.\e[0m"
         continue
     fi
     if id "$Login" &>/dev/null; then
-        echo -e "\e[31mUsername '$Login' sudah wujud. Sila guna nama lain.\e[0m" 
+        echo -e "\e[38;5;220mUsername '$Login' sudah wujud. Sila guna nama lain.\e[0m" 
         continue
     fi
     break
