@@ -87,7 +87,7 @@ renew_user() {
     after_display=$(date -u -d "1970-01-01 +${expiry_after} days" '+%d %b %Y' 2>/dev/null || echo "(tiada)")
 
     if [ "$expiry_after" -eq "$new_expiry_days" ]; then
-        echo -e "\e[32mSuccess: expiry updated to $after_display\e[0m"
+        echo -e "\e[38;5;252mSuccess: expiry updated to $after_display\e[0m"
         return 0
     fi
 
@@ -101,12 +101,12 @@ renew_user() {
     after_display2=$(date -u -d "1970-01-01 +${expiry_after2} days" '+%d %b %Y' 2>/dev/null || echo "(tiada)")
 
     if [ "$expiry_after2" -eq "$new_expiry_days" ]; then
-        echo -e "\e[32mSuccess (via usermod): expiry updated to $after_display2\e[0m"
+        echo -e "\e[38;5;252mSuccess (via usermod): expiry updated to $after_display2\e[0m"
         return 0
     fi
 
     # If still not match, give helpful diagnostic
-    echo -e "\e[31mGagal mengemaskini expiry secara automatik.\e[0m"
+    echo -e "\e[38;5;220mGagal mengemaskini expiry secara automatik.\e[0m"
     echo "Nilai selepas percubaan (chage/usermod) yang dibaca di /etc/shadow:"
     echo " - After chage read:  $after_display"
     echo " - After usermod read: $after_display2"
