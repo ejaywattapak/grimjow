@@ -17,10 +17,10 @@ number=$(cat /etc/number)
 # TEXT ON BOX COLOUR
 box=$(cat /etc/box)
 clear
-yl='\e[1;38;5;220m'
-bl='\e[1;38;5;117m'
-gl='\e[38;5;252m'
-BLUE='\e[38;5;117m'
+yl='\e[031;1m'
+bl='\e[36;1m'
+gl='\e[32;1m'
+BLUE='\e[0;34m'
 clear
 echo -e ""
 echo -e "   \e[$line════════════════════════════════════════\e[m"

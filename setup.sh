@@ -2,17 +2,17 @@
 GitUser="ejaywattapak"
 
 # ================== COLOR ==================
-Lred='\e[1;38;5;220m'
-Lgreen='\e[38;5;252m'
-Lyellow='\e[38;5;220m'
-green='\e[38;5;252m'
-RED='\e[38;5;220m'
-NC='\e[0m'
-BGBLUE='\e[48;5;236m'
-ORANGE='\e[38;5;220m'
-BLUE='\e[38;5;117m'
-PURPLE='\e[38;5;214m'
-CYAN='\e[38;5;117m'
+Lred='\e[1;91m'
+Lgreen='\e[92m'
+Lyellow='\e[93m'
+green='\e[32m'
+RED='\033[0;31m'
+NC='\033[0m'
+BGBLUE='\e[1;44m'
+ORANGE='\033[0;33m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+CYAN='\033[0;36m'
 WHITE='\e[97m'
 BOLD='\e[1m'
 RESET='\e[0m'
@@ -178,10 +178,10 @@ check_ip_registered() {
 auth_menu() {
   while true; do
     echo
-    echo -e "\e[1;97mPilih kaedah authentication:\e[0m"
-    echo -e " \e[1;38;5;117m1)\e[0m \e[38;5;252mLicense Key\e[0m"
-    echo -e " \e[1;38;5;117m2)\e[0m \e[38;5;252mIP VPS (GitHub)\e[0m"
-    echo -e " \e[1;38;5;117m0)\e[0m \e[38;5;252mBatal\e[0m"
+    echo -e "${CYAN}Pilih kaedah authentication:${RESET}"
+    echo -e " ${Lgreen}1)${RESET} License Key"
+    echo -e " ${Lgreen}2)${RESET} IP VPS (GitHub)"
+    echo -e " ${Lred}0)${RESET} Batal"
     read -rp "Pilih: " opt
 
     case "$opt" in
@@ -273,17 +273,17 @@ mkdir /var/lib/premium-script;
 default_email=$( curl https://raw.githubusercontent.com/${GitUser}/email/main/default.conf )
 clear
 #Nama penyedia script
-echo -e "\e[1;38;5;220m════════════════════════════════════════════════════════════\e[0m"
+echo -e "\e[1;32m════════════════════════════════════════════════════════════\e[0m"
 echo ""
-echo -e "   \e[1;97mPlease enter the name of Provider for Script."
+echo -e "   \e[1;32mPlease enter the name of Provider for Script."
 read -p "   Name : " nm
 echo $nm > /root/provided
 echo ""
 #Email domain
-echo -e "\e[1;38;5;220m════════════════════════════════════════════════════════════\e[0m"
+echo -e "\e[1;32m════════════════════════════════════════════════════════════\e[0m"
 echo -e ""
-echo -e "   \e[1;97mPlease enter your email Domain/Cloudflare."
-echo -e "   \e[38;5;252m(Press ENTER for default email)\e[0m"
+echo -e "   \e[1;32mPlease enter your email Domain/Cloudflare."
+echo -e "   \e[1;31m(Press ENTER for default email)\e[0m"
 read -p "   Email : " email
 default=${default_email}
 new_email=$email
@@ -297,18 +297,18 @@ mkdir -p /usr/local/etc/xray/
 touch /usr/local/etc/xray/email
 echo $sts > /usr/local/etc/xray/email
 echo ""
-echo -e "\e[1;38;5;220m════════════════════════════════════════════════════════════\e[0m"
+echo -e "\e[1;32m════════════════════════════════════════════════════════════\e[0m"
 echo ""
 echo -e "   .----------------------------------."
-echo -e "   |\e[1;97mPlease select a domain type below \e[0m|"
+echo -e "   |\e[1;32mPlease select a domain type below \e[0m|"
 echo -e "   '----------------------------------'"
-echo -e "     \e[1;38;5;117m1)\e[0m \e[38;5;252mEnter your Subdomain\e[0m"
-echo -e "     \e[1;38;5;117m2)\e[0m \e[38;5;252mUse a random Subdomain\e[0m"
+echo -e "     \e[1;32m1)\e[0m Enter your Subdomain"
+echo -e "     \e[1;32m2)\e[0m Use a random Subdomain"
 echo -e "   ------------------------------------"
 read -p "   Please select numbers 1-2 or Any Button(Random) : " host
 echo ""
 if [[ $host == "1" ]]; then
-echo -e "   \e[1;97mPlease enter your subdomain "
+echo -e "   \e[1;32mPlease enter your subdomain "
 read -p "   Subdomain: " host1
 echo "IP=" >> /var/lib/premium-script/ipvps.conf
 echo $host1 > /root/domain
@@ -326,38 +326,38 @@ clear
 fi
 echo ""
 clear
-echo -e "\e[38;5;252mREADY FOR INSTALLATION SCRIPT...\e[0m"
+echo -e "\e[0;32mREADY FOR INSTALLATION SCRIPT...\e[0m"
 sleep 2
 #install ssh ovpn
-echo -e "\e[38;5;252mINSTALLING SSH & OVPN...\e[0m"
+echo -e "\e[0;32mINSTALLING SSH & OVPN...\e[0m"
 sleep 1
 wget https://raw.githubusercontent.com/${GitUser}/grimjow/main/install/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
-echo -e "\e[38;5;252mDONE INSTALLING SSH & OVPN\e[0m"
+echo -e "\e[0;32mDONE INSTALLING SSH & OVPN\e[0m"
 clear
 #install Xray
-echo -e "\e[38;5;252mINSTALLING XRAY CORE...\e[0m"
+echo -e "\e[0;32mINSTALLING XRAY CORE...\e[0m"
 sleep 1
 wget https://raw.githubusercontent.com/${GitUser}/grimjow/main/install/ins-xray.sh && chmod +x ins-xray.sh && screen -S ins-xray ./ins-xray.sh
-echo -e "\e[38;5;252mDONE INSTALLING XRAY CORE\e[0m"
+echo -e "\e[0;32mDONE INSTALLING XRAY CORE\e[0m"
 clear
 #install ohp-server
-echo -e "\e[38;5;252mINSTALLING OHP PORT...\e[0m"
+echo -e "\e[0;32mINSTALLING OHP PORT...\e[0m"
 sleep 1
 wget https://raw.githubusercontent.com/${GitUser}/grimjow/main/install/ohp.sh && chmod +x ohp.sh && ./ohp.sh
 wget https://raw.githubusercontent.com/${GitUser}/grimjow/main/install/ohp-dropbear.sh && chmod +x ohp-dropbear.sh && ./ohp-dropbear.sh
 wget https://raw.githubusercontent.com/${GitUser}/grimjow/main/install/ohp-ssh.sh && chmod +x ohp-ssh.sh && ./ohp-ssh.sh
-echo -e "\e[38;5;252mDONE INSTALLING OHP PORT\e[0m"
+echo -e "\e[0;32mDONE INSTALLING OHP PORT\e[0m"
 clear
 #install websocket
-echo -e "\e[38;5;252mINSTALLING WEBSOCKET PORT...\e[0m"
+echo -e "\e[0;32mINSTALLING WEBSOCKET PORT...\e[0m"
 wget https://raw.githubusercontent.com/${GitUser}/grimjow/main/websocket-python/websocket.sh && chmod +x websocket.sh && screen -S websocket.sh ./websocket.sh
-echo -e "\e[38;5;252mDONE INSTALLING WEBSOCKET PORT\e[0m"
+echo -e "\e[0;32mDONE INSTALLING WEBSOCKET PORT\e[0m"
 clear
 #install SET-BR
-echo -e "\e[38;5;252mINSTALLING SET-BR...\e[0m"
+echo -e "\e[0;32mINSTALLING SET-BR...\e[0m"
 sleep 1
 wget https://raw.githubusercontent.com/${GitUser}/grimjow/main/install/set-br.sh && chmod +x set-br.sh && ./set-br.sh
-echo -e "\e[38;5;252mDONE INSTALLING SET-BR...\e[0m"
+echo -e "\e[0;32mDONE INSTALLING SET-BR...\e[0m"
 clear
 # set time GMT +8
 ln -fs /usr/share/zoneinfo/Asia/Kuala_Lumpur /etc/localtime
@@ -381,13 +381,13 @@ rm -f /root/ohp-ssh.sh
 rm -f /root/websocket.sh
 rm -f /root/set-br.sh
 # Colour Default
-echo "1;38;5;220m" > /etc/banner
-echo "1;38;5;214m" > /etc/box
-echo "1;38;5;220m" > /etc/line
-echo "1;97m" > /etc/text
-echo "38;5;252m" > /etc/below
-echo "48;5;236m" > /etc/back
-echo "1;38;5;117m" > /etc/number
+echo "1;34m" > /etc/banner
+echo "30m" > /etc/box
+echo "1;34m" > /etc/line
+echo "1;37m" > /etc/text
+echo "1;37m" > /etc/below
+echo "47m" > /etc/back
+echo "1;35m" > /etc/number
 echo Standard > /usr/bin/test
 # Version
 ver=$( curl https://raw.githubusercontent.com/${GitUser}/version/main/version.conf )
@@ -397,7 +397,7 @@ clear
 echo " "
 echo "Installation has been completed!!"
 echo " "
-echo -e "\e[38;5;252m══════════════════ Autoscript PREMIUM ══════════════════\e[0m" | tee -a log-install.txt
+echo -e "\e[1;32m══════════════════ Autoscript PREMIUM ══════════════════\e[0m" | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "   >>> Service & Port"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
@@ -463,16 +463,16 @@ echo "   - Auto Delete Expired Account" | tee -a log-install.txt
 echo "   - Full Orders For Various Services" | tee -a log-install.txt
 echo "   - White Label" | tee -a log-install.txt
 echo "   - Installation Log --> /root/log-install.txt"  | tee -a log-install.txt
-echo -e "\e[38;5;252m══════════════════ Autoscript By ejaywattapak ══════════════════\e[0m" | tee -a log-install.txt
+echo -e "\e[1;32m══════════════════ Autoscript By ejaywattapak ══════════════════\e[0m" | tee -a log-install.txt
 sleep 7
 clear
 echo ""
-echo -e "    \e[38;5;252m.------------------------------------------.\e[0m"
-echo -e "    \e[38;5;252m|     SUCCESFULLY INSTALLED THE SCRIPT     |\e[0m"
-echo -e "    \e[38;5;252m|         PREMIUM BY ejaywattapak            |\e[0m"
-echo -e "    \e[38;5;252m'------------------------------------------'\e[0m"
+echo -e "    \e[1;32m.------------------------------------------.\e[0m"
+echo -e "    \e[1;32m|     SUCCESFULLY INSTALLED THE SCRIPT     |\e[0m"
+echo -e "    \e[1;32m|         PREMIUM BY ejaywattapak            |\e[0m"
+echo -e "    \e[1;32m'------------------------------------------'\e[0m"
 echo ""
-echo -e "   \e[38;5;252mYour VPS Will Be Automatical Reboot In 5 seconds\e[0m"
+echo -e "   \e[1;32mYour VPS Will Be Automatical Reboot In 5 seconds\e[0m"
 rm -r setup.sh
 sleep 5
 reboot

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-RED="\e[38;5;220m"
-YELLOW="\e[1;38;5;220m"
+RED="\e[31m"
+YELLOW="\e[1;33m"
 WHITE="\e[97m"
 BOLD="\e[1m"
 RESET="\e[0m"

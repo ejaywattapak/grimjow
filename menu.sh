@@ -79,19 +79,19 @@ total_ssh="$(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd | wc 
 # PROVIDED
 creditt=$(cat /root/provided)
 # BANNER COLOUR
-banner_colour="1;38;5;220m"
+banner_colour=$(cat /etc/banner)
 # TEXT ON BOX COLOUR
-box="1;38;5;214m"
+box=$(cat /etc/box)
 # LINE COLOUR
-line="1;38;5;220m"
+line=$(cat /etc/line)
 # TEXT COLOUR ON TOP
-text="1;97m"
+text=$(cat /etc/text)
 # TEXT COLOUR BELOW
-below="38;5;252m"
+below=$(cat /etc/below)
 # BACKGROUND TEXT COLOUR
-back_text="48;5;236m"
+back_text=$(cat /etc/back)
 # NUMBER COLOUR
-number="1;38;5;117m"
+number=$(cat /etc/number)
 # BANNER
 banner=$(cat /usr/bin/bannerku)
 ascii=$(cat /usr/bin/test)
@@ -255,8 +255,8 @@ clear
 echo -e "\e[$banner_colour"
 figlet -f $ascii "$banner"
 echo -e "\e[$text VPS Script"
-GREEN=$'\e[38;5;220m'
-RED=$'\e[38;5;203m'
+GREEN=$'\e[32m'
+RED=$'\e[31m'
 NC=$'\e[0m'
 # ================== PREP DATA ==================
 cname_clean=$(echo "$cname" | sed 's/^[[:space:]]*//')
@@ -344,7 +344,7 @@ printf "  %s%-*s%s %s%*s %*s %*s%s\n" \
   "$C1" "$wlabel" "Upload" "$C0" \
   "$C1" "$wcol" "$utoday" "$wcol" "$uyest" "$wcol" "$umon" "$C0"
 
-GREEN="$(printf '\033[1;38;5;220m')"
+GREEN="$(printf '\033[1;32m')"
 RESET="$(printf '\033[0m')"
 tmon_br="${GREEN}[$tmon]${RESET}"
 
@@ -384,8 +384,8 @@ echo -e "  \e[$number (10)\e[m \e[$below CHECK RUNNING\e[m        \e[$number (14
 echo -e ""
 echo -e "  \e[$below[Ctrl + C] For exit from main menu\e[m"
 echo -e " \e[$line╒═════════════════════════════════════════════════════════════╕\e[m"
-echo -e "  \e[$below Version Name         : SSH XRAY WEBSOCKET MULTIPORT V3.0"
-echo -e "  \e[$below Autoscript Mod By    : ejaywattapak"
+echo -e "  \e[$below Version Name         : SSH XRAY WEBSOCKET"
+echo -e "  \e[$below Autoscript By        : ejaywattapak"
 echo -e " \e[$line╘═════════════════════════════════════════════════════════════╛\e[m"
 echo -e "\e[$below "
 read -p " Select menu :  " menu
@@ -444,4 +444,4 @@ x)
     sleep 1
     exec menu
     ;;
-esac
+esac�

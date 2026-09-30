@@ -4,9 +4,9 @@ set -Eeuo pipefail
 GitUser="ejaywattapak"
 STATE_FILE="/home/limit"
 
-Green_font_prefix="\e[38;5;252m"
-Red_font_prefix="\e[38;5;220m"
-Font_color_suffix="\e[0m"
+Green_font_prefix="\033[32m"
+Red_font_prefix="\033[31m"
+Font_color_suffix="\033[0m"
 Info="${Green_font_prefix}[ON]${Font_color_suffix}"
 Error="${Red_font_prefix}[OFF]${Font_color_suffix}"
 
@@ -173,9 +173,9 @@ main_menu() {
     sts="$(get_status)"
     cur="$(get_current_limit_line)"
 
-    echo -e " \e[38;5;252m==============================\e[0m"
-    echo -e "     \e[1;38;5;117mLimit Bandwidth Speed\e[0m"
-    echo -e " \e[38;5;252m==============================\e[0m"
+    echo -e " \e[0;32m==============================\e[0m"
+    echo -e "     \e[1;36mLimit Bandwidth Speed\e[0m"
+    echo -e " \e[0;32m==============================\e[0m"
     echo -e " Status        $sts"
     echo -e " NIC           $nic"
     echo -e " Current Limit $cur"
