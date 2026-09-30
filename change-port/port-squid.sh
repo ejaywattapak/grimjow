@@ -8,15 +8,15 @@ MYIP=$(curl -sS ifconfig.me )
 clear
 sqd="$(cat /etc/squid/squid.conf | grep -i http_port | awk '{print $2}' | head -n1)"
 sqd2="$(cat /etc/squid/squid.conf | grep -i http_port | awk '{print $2}' | tail -n1)"
-echo -e "\e[0;31m.-----------------------------------------.\e[0m"
-echo -e "\e[0;31m|             \e[0;36mCHANGE PORT SQUID\e[m           \e[0;31m|\e[0m"
-echo -e "\e[0;31m'-----------------------------------------'\e[0m"
-echo -e " \e[1;31m>>\e[0m\e[0;34mChange Port For Squid:\e[0m"
-echo -e "     [1]  Change Port $sqd"
-echo -e "     [2]  Change Port $sqd2"
-echo -e "======================================"
-echo -e "     [x]  Back To Menu Change Port"
-echo -e "     [y]  Go To Main Menu"
+echo -e "\e[1;38;5;220m.-----------------------------------------.\e[0m"
+echo -e "\e[1;38;5;220m|             \e[1;38;5;214mCHANGE PORT SQUID\e[m           \e[1;38;5;220m|\e[0m"
+echo -e "\e[1;38;5;220m'-----------------------------------------'\e[0m"
+echo -e " \e[1;38;5;117m>>\e[0m\e[38;5;252mChange Port For Squid:\e[0m"
+echo -e "     \e[1;38;5;117m[1]\e[0m  \e[38;5;252mChange Port $sqd\e[0m"
+echo -e "     \e[1;38;5;117m[2]\e[0m  \e[38;5;252mChange Port $sqd2\e[0m"
+echo -e "\e[1;38;5;220m======================================\e[0m"
+echo -e "     \e[1;38;5;117m[x]\e[0m  \e[38;5;252mBack To Menu Change Port\e[0m"
+echo -e "     \e[1;38;5;117m[y]\e[0m  \e[38;5;252mGo To Main Menu\e[0m"
 echo -e ""
 read -p "     Select From Options [1-3 or x & y] :  " prot
 echo -e ""
@@ -32,9 +32,9 @@ if [[ -z $cek ]]; then
 sed -i "s/$sqd/$squid/g" /etc/squid/squid.conf
 sed -i "s/$sqd/$squid/g" /root/log-install.txt
 /etc/init.d/squid restart > /dev/null
-echo -e "\e[032;1mPort $squid modified successfully\e[0m"
+echo -e "\e[38;5;252mPort $squid modified successfully\e[0m"
 else
-echo -e "\e[1;31mPort $squid is used\e[0m"
+echo -e "\e[1;38;5;220mPort $squid is used\e[0m"
 fi
 ;;
 2)
@@ -48,9 +48,9 @@ if [[ -z $cek ]]; then
 sed -i "s/$sqd2/$squid/g" /etc/squid/squid.conf
 sed -i "s/$sqd2/$squid/g" /root/log-install.txt
 /etc/init.d/squid restart > /dev/null
-echo -e "\e[032;1mPort $squid modified successfully\e[0m"
+echo -e "\e[38;5;252mPort $squid modified successfully\e[0m"
 else
-echo -e "\e[1;31mPort $squid is used\e[0m"
+echo -e "\e[1;38;5;220mPort $squid is used\e[0m"
 fi
 ;;
 x)

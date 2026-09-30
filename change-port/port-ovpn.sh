@@ -12,17 +12,17 @@ ovpn="$(netstat -nlpt | grep -i openvpn | grep -i 0.0.0.0 | awk '{print $4}' | c
 ovpn2="$(netstat -nlpu | grep -i openvpn | grep -i 0.0.0.0 | awk '{print $4}' | cut -d: -f2)"
 ovpn3="$(cat ~/log-install.txt | grep -w "OHP OpenVPN" | cut -d: -f2|sed 's/ //g')"
 ovpn4="$(cat ~/log-install.txt | grep -w "OpenVPN SSL" | cut -d: -f2|sed 's/ //g')"
-echo -e "\e[1;36m.-----------------------------------------.\e[0m"
-echo -e "\e[1;36m|            \e[1;33mCHANGE PORT OPENVPN\e[m          \e[1;36m|\e[0m"
-echo -e "\e[1;36m'-----------------------------------------'\e[0m"
-echo -e " \e[0;32m>>\e[0m\e[1;35mChange Port For OpenVPN:\e[0m"
-echo -e "     [1]  Change Port TCP $ovpn"
-echo -e "     [2]  Change Port UDP $ovpn2"
-echo -e "     [3]  Change Port OHP $ovpn3"
-echo -e "     [4]  Change Port SSL $ovpn4"
-echo -e "======================================"
-echo -e "     [x]  Back To Menu Change Port"
-echo -e "     [y]  Go To Main Menu"
+echo -e "\e[1;38;5;220m.-----------------------------------------.\e[0m"
+echo -e "\e[1;38;5;220m|            \e[1;38;5;214mCHANGE PORT OPENVPN\e[m          \e[1;38;5;220m|\e[0m"
+echo -e "\e[1;38;5;220m'-----------------------------------------'\e[0m"
+echo -e " \e[1;38;5;117m>>\e[0m\e[38;5;252mChange Port For OpenVPN:\e[0m"
+echo -e "     \e[1;38;5;117m[1]\e[0m  \e[38;5;252mChange Port TCP $ovpn\e[0m"
+echo -e "     \e[1;38;5;117m[2]\e[0m  \e[38;5;252mChange Port UDP $ovpn2\e[0m"
+echo -e "     \e[1;38;5;117m[3]\e[0m  \e[38;5;252mChange Port OHP $ovpn3\e[0m"
+echo -e "     \e[1;38;5;117m[4]\e[0m  \e[38;5;252mChange Port SSL $ovpn4\e[0m"
+echo -e "\e[1;38;5;220m======================================\e[0m"
+echo -e "     \e[1;38;5;117m[x]\e[0m  \e[38;5;252mBack To Menu Change Port\e[0m"
+echo -e "     \e[1;38;5;117m[y]\e[0m  \e[38;5;252mGo To Main Menu\e[0m"
 echo -e ""
 read -p "     Select From Options [1-4 or x & y] :  " prot
 echo -e ""
@@ -91,9 +91,9 @@ systemctl disable --now openvpn-server@server-tcp-$ovpn > /dev/null
 systemctl enable --now openvpn-server@server-tcp-$vpn > /dev/null
 sed -i "s/   - OpenVPN                 : TCP $ovpn, UDP $ovpn2/   - OpenVPN                 : TCP $vpn, UDP $ovpn2/g" /root/log-install.txt
 sed -i "s/$ovpn/$vpn/g" /etc/stunnel/stunnel.conf
-echo -e "\e[032;1mPort $vpn modified successfully\e[0m"
+echo -e "\e[38;5;252mPort $vpn modified successfully\e[0m"
 else
-echo -e "\e[1;31mPort $vpn is used\e[0m"
+echo -e "\e[1;38;5;220mPort $vpn is used\e[0m"
 fi
 ;;
 2)
@@ -159,9 +159,9 @@ cp /etc/openvpn/client-udp-$vpn.ovpn /home/vps/public_html/client-udp-$vpn.ovpn
 systemctl disable --now openvpn-server@server-udp-$ovpn2 > /dev/null
 systemctl enable --now openvpn-server@server-udp-$vpn > /dev/null
 sed -i "s/   - OpenVPN                 : TCP $ovpn, UDP $ovpn2/   - OpenVPN                 : TCP $ovpn, UDP $vpn/g" /root/log-install.txt
-echo -e "\e[032;1mPort $vpn modified successfully\e[0m"
+echo -e "\e[38;5;252mPort $vpn modified successfully\e[0m"
 else
-echo -e "\e[1;31mPort $vpn is used\e[0m"
+echo -e "\e[1;38;5;220mPort $vpn is used\e[0m"
 fi
 ;;
 3)
@@ -224,9 +224,9 @@ systemctl enable ohp
 systemctl restart ohp
 sed -i "s/   - OHP OpenVPN             : $ovpn3/   - OHP OpenVPN             : $vpn/g" /root/log-install.txt
 sed -i "s/$ovpn3/$vpn/g" /etc/stunnel/stunnel.conf
-echo -e "\e[032;1mPort $vpn modified successfully\e[0m"
+echo -e "\e[38;5;252mPort $vpn modified successfully\e[0m"
 else
-echo -e "\e[1;31mPort OHP OpenVPN $vpn is used\e[0m"
+echo -e "\e[1;38;5;220mPort OHP OpenVPN $vpn is used\e[0m"
 fi
 ;;
 4)
@@ -265,9 +265,9 @@ systemctl start openvpn
 sed -i "s/   - OpenVPN SSL             : $ovpn4/   - OpenVPN SSL             : $vpn/g" /root/log-install.txt
 sed -i "s/$ovpn4/$vpn/g" /etc/stunnel/stunnel.conf
 /etc/init.d/stunnel4 restart > /dev/null
-echo -e "\e[032;1mPort $vpn modified successfully\e[0m"
+echo -e "\e[38;5;252mPort $vpn modified successfully\e[0m"
 else
-echo -e "\e[1;31mPort OpenVPN SSL $vpn is used\e[0m"
+echo -e "\e[1;38;5;220mPort OpenVPN SSL $vpn is used\e[0m"
 fi
 ;;
 x)

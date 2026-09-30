@@ -8,15 +8,15 @@ MYIP=$(curl -sS ifconfig.me )
 clear
 ohpssh="$(cat ~/log-install.txt | grep -w "OHP SSH" | cut -d: -f2|sed 's/ //g')"
 ohpdrop="$(cat ~/log-install.txt | grep -w "OHP Dropbear" | cut -d: -f2|sed 's/ //g')"
-echo -e "\e[1;33m.-----------------------------------------.\e[0m"
-echo -e "\e[1;33m|         \e[0;36mCHANGE PORT OHP OPENSSH\e[m         \e[1;33m|\e[0m"
-echo -e "\e[1;33m'-----------------------------------------'\e[0m"
-echo -e " \e[1;31m>>\e[0m\e[0;32mChange Port For OHP OpenSSH:\e[0m"
-echo -e "     [1]  Change Port OHP SSH $ohpssh"
-echo -e "     [2]  Change Port OHP Dropbear $ohpdrop"
-echo -e "======================================"
-echo -e "     [x]  Back To Menu Change Port"
-echo -e "     [y]  Go To Main Menu"
+echo -e "\e[1;38;5;220m.-----------------------------------------.\e[0m"
+echo -e "\e[1;38;5;220m|         \e[1;38;5;214mCHANGE PORT OHP OPENSSH\e[m         \e[1;38;5;220m|\e[0m"
+echo -e "\e[1;38;5;220m'-----------------------------------------'\e[0m"
+echo -e " \e[1;38;5;117m>>\e[0m\e[38;5;252mChange Port For OHP OpenSSH:\e[0m"
+echo -e "     \e[1;38;5;117m[1]\e[0m  \e[38;5;252mChange Port OHP SSH $ohpssh\e[0m"
+echo -e "     \e[1;38;5;117m[2]\e[0m  \e[38;5;252mChange Port OHP Dropbear $ohpdrop\e[0m"
+echo -e "\e[1;38;5;220m======================================\e[0m"
+echo -e "     \e[1;38;5;117m[x]\e[0m  \e[38;5;252mBack To Menu Change Port\e[0m"
+echo -e "     \e[1;38;5;117m[y]\e[0m  \e[38;5;252mGo To Main Menu\e[0m"
 echo -e ""
 read -p "     Select From Options [1-2 or x & y] :  " prot
 echo -e ""
@@ -49,9 +49,9 @@ systemctl daemon-reload
 systemctl enable ohps
 systemctl restart ohps
 sed -i "s/   - OHP SSH                 : $ohpssh/   - OHP SSH                 : $vpn/g" /root/log-install.txt
-echo -e "\e[032;1mPort $vpn modified successfully\e[0m"
+echo -e "\e[38;5;252mPort $vpn modified successfully\e[0m"
 else
-echo -e "\e[1;31mPort OHP SSH $vpn is used\e[0m"
+echo -e "\e[1;38;5;220mPort OHP SSH $vpn is used\e[0m"
 fi
 ;;
 2)
@@ -82,9 +82,9 @@ systemctl daemon-reload
 systemctl enable ohpd
 systemctl restart ohpd
 sed -i "s/   - OHP Dropbear            : $ohpdrop/   - OHP Dropbear            : $vpn/g" /root/log-install.txt
-echo -e "\e[032;1mPort $vpn modified successfully\e[0m"
+echo -e "\e[38;5;252mPort $vpn modified successfully\e[0m"
 else
-echo -e "\e[1;31mPort OHP Dropbear $vpn is used\e[0m"
+echo -e "\e[1;38;5;220mPort OHP Dropbear $vpn is used\e[0m"
 fi
 ;;
 x)

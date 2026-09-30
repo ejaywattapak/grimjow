@@ -7,8 +7,8 @@ GitUser="ejaywattapak"
 MYIP=$(curl -sS ipv4.icanhazip.com)
 
 # Warna
-RED='\033[0;31m'
-NC='\033[0m'
+RED='\e[38;5;220m'
+NC='\e[0m'
 
 LOG=/root/log-install.txt
 CONFIG_TLS=/usr/local/etc/xray/config.json
@@ -28,7 +28,7 @@ kill_port_if_used() {
 
     if [[ -n "$net_lines" ]]; then
         echo -e "${RED}[WARNING]${NC} port in used : $port"
-        echo -e "\e[1;33m[INFO]\e[0m Service/Process yang guna port $port:"
+        echo -e "\e[1;38;5;220m[INFO]\e[0m Service/Process yang guna port $port:"
 
         # Papar info detail (PID/Program + service unit kalau ada)
         while IFS= read -r line; do
@@ -56,13 +56,13 @@ kill_port_if_used() {
 
         echo ""
         echo -e "Pilihan:"
-        echo -e "  [1] Kill port tersebut dan teruskan tukar port"
-        echo -e "  [2] Cancel"
+        echo -e "  \e[1;38;5;117m[1]\e[0m \e[38;5;252mKill port tersebut dan teruskan tukar port\e[0m"
+        echo -e "  \e[1;38;5;117m[2]\e[0m \e[38;5;252mCancel\e[0m"
         read -p "Pilih [1-2]: " ans
 
         case "$ans" in
             1)
-                echo -e "\e[1;33m[INFO]\e[0m Killing processes on port $port..."
+                echo -e "\e[1;38;5;220m[INFO]\e[0m Killing processes on port $port..."
                 # Kill normal dulu
                 for entry in $(echo "$net_lines" | awk '{print $7}' | sort -u); do
                     pid="${entry%%/*}"
@@ -75,7 +75,7 @@ kill_port_if_used() {
                 # Check lagi, kalau masih ada, force kill
                 net_lines=$(netstat -nutlp 2>/dev/null | awk -v p=":$port" '$4 ~ p"$" {print}')
                 if [[ -n "$net_lines" ]]; then
-                    echo -e "\e[1;33m[INFO]\e[0m Force killing remaining PIDs on port $port..."
+                    echo -e "\e[1;38;5;220m[INFO]\e[0m Force killing remaining PIDs on port $port..."
                     for entry in $(echo "$net_lines" | awk '{print $7}' | sort -u); do
                         pid="${entry%%/*}"
                         if [[ -n "$pid" && "$pid" != "-" ]]; then
@@ -122,17 +122,17 @@ xhttp_tls=$(grep -w "Vless Xhttp Tls" "$LOG" 2>/dev/null | head -n1 | cut -d: -f
 xhttp_none=$(grep -w "Vless Xhttp None Tls" "$LOG" 2>/dev/null | head -n1 | cut -d: -f2 | sed 's/ //g')
 
 clear
-echo -e "\e[0;34m.-----------------------------------------.\e[0m"
-echo -e "\e[0;34m|             \e[1;33mCHANGE PORT XRAY\e[m            \e[0;34m|\e[0m"
-echo -e "\e[0;34m'-----------------------------------------'\e[0m"
-echo -e " \e[1;31m>>\e[0m\e[0;32mChange Port For Xray :\e[0m"
-echo -e "  [1]  Change Port Xray Core TLS        [ ${RED}${tls:-N/A}${NC} ]"
-echo -e "  [2]  Change Port Xray Core None TLS   [ ${RED}${none:-N/A}${NC} ]"
-echo -e "  [3]  Change Port Xray XHTTP TLS       [ ${RED}${xhttp_tls:-N/A}${NC} ]"
-echo -e "  [4]  Change Port Xray XHTTP None TLS  [ ${RED}${xhttp_none:-N/A}${NC} ]"
-echo -e " ============================================="
-echo -e "  [x]  Back To Menu Change Port"
-echo -e "  [y]  Go To Main Menu"
+echo -e "\e[1;38;5;220m.-----------------------------------------.\e[0m"
+echo -e "\e[1;38;5;220m|             \e[1;38;5;220mCHANGE PORT XRAY\e[m            \e[1;38;5;220m|\e[0m"
+echo -e "\e[1;38;5;220m'-----------------------------------------'\e[0m"
+echo -e " \e[1;38;5;117m>>\e[0m\e[38;5;252mChange Port For Xray :\e[0m"
+echo -e "  \e[1;38;5;117m[1]\e[0m  \e[38;5;252mChange Port Xray Core TLS        [ ${RED}${tls:-N/A}${NC} ]\e[0m"
+echo -e "  \e[1;38;5;117m[2]\e[0m  \e[38;5;252mChange Port Xray Core None TLS   [ ${RED}${none:-N/A}${NC} ]\e[0m"
+echo -e "  \e[1;38;5;117m[3]\e[0m  \e[38;5;252mChange Port Xray XHTTP TLS       [ ${RED}${xhttp_tls:-N/A}${NC} ]\e[0m"
+echo -e "  \e[1;38;5;117m[4]\e[0m  \e[38;5;252mChange Port Xray XHTTP None TLS  [ ${RED}${xhttp_none:-N/A}${NC} ]\e[0m"
+echo -e " \e[1;38;5;220m=============================================\e[0m"
+echo -e "  \e[1;38;5;117m[x]\e[0m  \e[38;5;252mBack To Menu Change Port\e[0m"
+echo -e "  \e[1;38;5;117m[y]\e[0m  \e[38;5;252mGo To Main Menu\e[0m"
 echo -e ""
 read -p "   Select From Options [1-4 or x & y] :  " prot
 echo -e ""
@@ -183,7 +183,7 @@ case "$prot" in
     restart_all
 
     clear
-    echo -e "\e[032;1mPort TLS $tls -> $tls1 modified successfully\e[0m"
+    echo -e "\e[38;5;252mPort TLS $tls -> $tls1 modified successfully\e[0m"
     ;;
 
 2)
@@ -223,7 +223,7 @@ case "$prot" in
     restart_all
 
     clear
-    echo -e "\e[032;1mPort NONE $none -> $none1 modified successfully\e[0m"
+    echo -e "\e[38;5;252mPort NONE $none -> $none1 modified successfully\e[0m"
     ;;
 
 3)
@@ -259,7 +259,7 @@ case "$prot" in
     restart_all
 
     clear
-    echo -e "\e[032;1mPort XHTTP TLS $xhttp_tls -> $xhttp_tls1 modified successfully\e[0m"
+    echo -e "\e[38;5;252mPort XHTTP TLS $xhttp_tls -> $xhttp_tls1 modified successfully\e[0m"
     ;;
 
 4)
@@ -295,7 +295,7 @@ case "$prot" in
     restart_all
 
     clear
-    echo -e "\e[032;1mPort XHTTP NONE $xhttp_none -> $xhttp_none1 modified successfully\e[0m"
+    echo -e "\e[38;5;252mPort XHTTP NONE $xhttp_none -> $xhttp_none1 modified successfully\e[0m"
     ;;
 
 x)
