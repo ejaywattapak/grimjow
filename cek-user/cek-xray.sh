@@ -4,9 +4,9 @@ clear
 LOGFILE="/var/log/xray/access.log"
 LOGLINES=50000
 
-echo -e "\033[0;34m------------------------------------------\033[0m"
-echo -e "\E[0;44;37m  ALL USER LOGIN XRAY VLESS/VMESS/TROJAN  \E[0m"
-echo -e "\033[0;34m------------------------------------------\033[0m"
+echo -e "\e[1;38;5;220m------------------------------------------\e[0m"
+echo -e "\e[48;5;236m\e[1;38;5;214m  ALL USER LOGIN XRAY VLESS/VMESS/TROJAN  \e[0m"
+echo -e "\e[1;38;5;220m------------------------------------------\e[0m"
 
 if [[ ! -f "$LOGFILE" ]]; then
   echo "Log file tak jumpa: $LOGFILE"
