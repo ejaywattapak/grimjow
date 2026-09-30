@@ -1,24 +1,24 @@
 #!/bin/bash
 # Color Validation
-DF='\e[39m'
+DF='\e[0m'
 Bold='\e[1m'
-Blink='\e[5m'
-yell='\e[33m'
-red='\e[31m'
-RED='\033[0;31m'
-BGWHITE='\e[0;47;30m'
-green='\e[32m'
-blue='\e[34m'
-PURPLE='\e[35m'
-CYAN='\e[36m'
-Lred='\e[91m'
-Lgreen='\e[92m'
-Lyellow='\e[93m'
+Blink='\e[0m'
+yell='\e[38;5;220m'
+red='\e[38;5;220m'
+RED='\e[38;5;220m'
+BGWHITE='\e[48;5;236m\e[30m'
+green='\e[38;5;252m'
+blue='\e[38;5;117m'
+PURPLE='\e[38;5;214m'
+CYAN='\e[1;38;5;117m'
+Lred='\e[38;5;220m'
+Lgreen='\e[38;5;252m'
+Lyellow='\e[38;5;220m'
 NC='\e[0m'
-GREEN='\033[0;32m'
-ORANGE='\033[0;33m'
-CYAN='\e[36m'
-LIGHT='\033[0;37m'
+GREEN='\e[38;5;252m'
+ORANGE='\e[38;5;220m'
+CYAN='\e[1;38;5;117m'
+LIGHT='\e[97m'
 tokengit=$(cat /etc/adminip/access.conf)
 MYIP=$(wget -qO- ipinfo.io/ip);
 MYIP=$(curl -s ipinfo.io/ip )
@@ -69,7 +69,7 @@ echo -e "[ ${Lyellow}INFO${NC} ] Checking the IPVPS if Already Registered"
 sleep 1
 cek=$( curl -sS https://raw.githubusercontent.com/ejaywattapak/allow/main/ipvps.conf | awk '{print $5}' | grep $daftar )
 if [[ $daftar = $cek ]]; then
-echo -e "\e[1;31m The IP VPS Has Been Registered\e[0m"
+echo -e "\e[38;5;220m The IP VPS Has Been Registered\e[0m"
 sleep 2
 exit
 else
@@ -122,16 +122,16 @@ links1="apt-get update && apt-get upgrade -y && update-grub && sleep 2 && reboot
 links2="apt-get update && apt-get upgrade -y && apt dist-upgrade -y && update-grub && sleep 2 && reboot"
 links3="sysctl -w net.ipv6.conf.all.disable_ipv6=1 && sysctl -w net.ipv6.conf.default.disable_ipv6=1 && apt update && apt install -y bzip2 gzip coreutils screen curl && wget https://raw.githubusercontent.com/ejaywattapak/grimjow/main/setup.sh && chmod +x setup.sh && sed -i -e 's/\r$//' setup.sh && screen -S setup ./setup.sh"
 
-echo -e "\033[0;34m----------------------------------------\033[0m"
+echo -e "\e[1;38;5;220m----------------------------------------\e[0m"
 echo "  Client IP VPS Add Successfully"
-echo -e "\033[0;34m----------------------------------------\033[0m"
+echo -e "\e[1;38;5;220m----------------------------------------\e[0m"
 echo "  Ip VPS        : $daftar"
 echo "  Order ID      : $id"
 echo "  Register Date : $hariini"
 echo "  Expired Date  : $exp"
 echo "  Client Name   : $client"
 echo "  Script Ver    : ejaywattapak_MULTIPORT"
-echo -e "\033[0;34m----------------------------------------\033[0m"
+echo -e "\e[1;38;5;220m----------------------------------------\e[0m"
 echo " Update & Upgrade First Your VPS for Debian 10 & 11: "
 echo ""
 echo -e '' ${links1}''
@@ -144,12 +144,12 @@ echo "  Link Script 	: "
 echo ""
 echo -e '' ${links3}''
 echo ""
-echo -e "\033[0;34m----------------------------------------\033[0m"
+echo -e "\e[1;38;5;220m----------------------------------------\e[0m"
 echo "                          NOTA"
-echo -e "\033[0;34m----------------------------------------\033[0m"
+echo -e "\e[1;38;5;220m----------------------------------------\e[0m"
 echo "  siapkan email cloud flare untuk cert xray  "
 echo "  pastikan domain dah siap2 pointing di CF ya sblm install  "
-echo -e "\033[0;34m----------------------------------------\033[0m"
+echo -e "\e[1;38;5;220m----------------------------------------\e[0m"
 rm -rf /root/allow
 rm -rf /root/data
 rm -rf /root/ipvps.conf
@@ -179,14 +179,14 @@ git init
 touch ipvps.conf
 echo -e "[ ${Lyellow}INFO${NC} ] Checking list.."
 clear
-echo -e "\033[0;34m----------------------------------------\033[0m"
-echo -e "\E[44;1;39m      Delete User IP VPS Registered     \E[0m"
-echo -e "\033[0;34m----------------------------------------\033[0m"
-echo -e "\033[0;34m----------------------------------------\033[0m"
+echo -e "\e[1;38;5;220m----------------------------------------\e[0m"
+echo -e "\e[48;5;236m\e[1;38;5;214m      Delete User IP VPS Registered     \e[0m"
+echo -e "\e[1;38;5;220m----------------------------------------\e[0m"
+echo -e "\e[1;38;5;220m----------------------------------------\e[0m"
 echo -e "    No.     USER      EXP DATE    IPVPS"
-echo -e "\033[0;34m----------------------------------------\033[0m"
+echo -e "\e[1;38;5;220m----------------------------------------\e[0m"
 grep -E "^### " "/root/allow/ipvps.conf" | cut -d ' ' -f 2-5 | nl -s '. '
-echo -e "\033[0;34m----------------------------------------\033[0m"
+echo -e "\e[1;38;5;220m----------------------------------------\e[0m"
 read -rp " Please Input Number : " nombor 
 client=$(grep -E "^### " "/root/allow/ipvps.conf" | cut -d ' ' -f 2 | sed -n "${nombor}"p)
 id=$(grep -E "^### " "/root/allow/ipvps.conf" | cut -d ' ' -f 3 | sed -n "${nombor}"p)
@@ -200,9 +200,9 @@ git branch -M main
 git remote add origin https://github.com/ejaywattapak/allow.git
 git push -f https://${tokengit}@github.com/ejaywattapak/allow.git
 clear
-echo -e "\033[0;34m----------------------------------------\033[0m"
+echo -e "\e[1;38;5;220m----------------------------------------\e[0m"
 echo " Client IP Deleted Successfully"
-echo -e "\033[0;34m----------------------------------------\033[0m"
+echo -e "\e[1;38;5;220m----------------------------------------\e[0m"
 echo " Ip VPS       : $daftar"
 echo " Order ID     : $id"
 echo " Expired Date : $exp"
@@ -234,9 +234,9 @@ git init
   touch ipvps.conf
 echo -e "[ ${Lyellow}INFO${NC} ] Checking list.."
 clear
-echo -e "\033[0;34m----------------------------------------\033[0m"
-echo -e "\E[44;1;39m      Renew User IP VPS Registered      \E[0m"
-echo -e "\033[0;34m----------------------------------------\033[0m"
+echo -e "\e[1;38;5;220m----------------------------------------\e[0m"
+echo -e "\e[48;5;236m\e[1;38;5;214m      Renew User IP VPS Registered      \e[0m"
+echo -e "\e[1;38;5;220m----------------------------------------\e[0m"
 NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/root/allow/ipvps.conf")
 	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
 		clear
@@ -244,11 +244,11 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/root/allow/ipvps.conf")
 		exit 1
 	fi
 	clear
-	echo -e "\033[0;34m----------------------------------------\033[0m"
-	echo -e "\E[44;1;39m      Renew User IP VPS Registered      \E[0m"
-	echo -e "\033[0;34m----------------------------------------\033[0m"
+	echo -e "\e[1;38;5;220m----------------------------------------\e[0m"
+	echo -e "\e[48;5;236m\e[1;38;5;214m      Renew User IP VPS Registered      \e[0m"
+	echo -e "\e[1;38;5;220m----------------------------------------\e[0m"
 	echo " Select the existing client you want to renew"
-	echo -e "\033[0;34m----------------------------------------\033[0m"
+	echo -e "\e[1;38;5;220m----------------------------------------\e[0m"
  grep -E "^### " "/root/allow/ipvps.conf" | cut -d ' ' -f 2-5 | nl -s '. '
   	until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
 		if [[ ${CLIENT_NUMBER} == '1' ]]; then
@@ -275,15 +275,15 @@ git remote add origin https://github.com/ejaywattapak/allow.git
 git push -f https://${tokengit}@github.com/ejaywattapak/allow.git
 echo -e "IPVPS Registration Completed"
   clear
-echo -e "\033[0;34m----------------------------------------\033[0m"
-echo -e "\E[44;1;39m    Client IP VPS Renew Successfully    \E[0m"
-echo -e "\033[0;34m----------------------------------------\033[0m"
+echo -e "\e[1;38;5;220m----------------------------------------\e[0m"
+echo -e "\e[48;5;236m\e[1;38;5;214m    Client IP VPS Renew Successfully    \e[0m"
+echo -e "\e[1;38;5;220m----------------------------------------\e[0m"
 echo "  Ip VPS        : $user"
 echo "  Order ID      : $id"
 echo "  Renew Date    : $now"
 echo "  Expired Date  : $exp4"
 echo "  Client Name   : $client"
-echo -e "\033[0;34m----------------------------------------\033[0m"
+echo -e "\e[1;38;5;220m----------------------------------------\e[0m"
 rm -rf /root/allow
 rm -rf /root/data
 rm -rf /root/ipvps.conf
@@ -312,14 +312,14 @@ git init
 touch ipvps.conf
 echo -e "[ ${Lyellow}INFO${NC} ] Checking list.."
 clear
-echo -e "\033[0;34m----------------------------------------\033[0m"
-echo -e "\E[44;1;39m       List User IP VPS Registered      \E[0m"
-echo -e "\033[0;34m----------------------------------------\033[0m"
+echo -e "\e[1;38;5;220m----------------------------------------\e[0m"
+echo -e "\e[48;5;236m\e[1;38;5;214m       List User IP VPS Registered      \e[0m"
+echo -e "\e[1;38;5;220m----------------------------------------\e[0m"
 ### USER  ID  VALIDITY  IPVPS
 echo -e "    No.   CLIENT NAME   EXP DATE   IPVPS"
-echo -e "\033[0;34m----------------------------------------\033[0m"
+echo -e "\e[1;38;5;220m----------------------------------------\e[0m"
 grep -E "^### " "/root/allow/ipvps.conf" | cut -d ' ' -f 2-5 | awk '{print $4,$3,$1}' | nl -s '. ' 
-echo -e "\033[0;34m----------------------------------------\033[0m"
+echo -e "\e[1;38;5;220m----------------------------------------\e[0m"
 rm -rf /root/allow
 rm -rf /root/data
 rm -rf /root/ipvps.conf
@@ -329,21 +329,21 @@ addip
 }
 
 clear
-echo -e "\033[0;34m----------------------------------------\033[0m"
-echo -e "\E[44;1;39m    MENU ADD IP MULTIPORT WS  \E[0m"
-echo -e "\033[0;34m----------------------------------------\033[0m"
+echo -e "\e[1;38;5;220m----------------------------------------\e[0m"
+echo -e "\e[48;5;236m\e[1;38;5;214m    MENU ADD IP MULTIPORT WS  \e[0m"
+echo -e "\e[1;38;5;220m----------------------------------------\e[0m"
 echo ""
-echo -e " [\e[36m 01 \e[0m] Add IP"
-echo -e " [\e[36m 02 \e[0m] Delete IP"
-echo -e " [\e[36m 03 \e[0m] Renew IP"
-echo -e " [\e[36m 04 \e[0m] Check User IP"
-echo -e " [\e[36m 05 \e[0m] Set Admin IP VPS"
+echo -e " [\e[1;38;5;117m 01 \e[0m] Add IP"
+echo -e " [\e[1;38;5;117m 02 \e[0m] Delete IP"
+echo -e " [\e[1;38;5;117m 03 \e[0m] Renew IP"
+echo -e " [\e[1;38;5;117m 04 \e[0m] Check User IP"
+echo -e " [\e[1;38;5;117m 05 \e[0m] Set Admin IP VPS"
 echo ""
 echo -e "Press x or [ Ctrl+C ]   To-Exit"
 echo -e ""
-echo -e "\033[0;34m----------------------------------------\033[0m"
-echo -e "\E[44;1;39m      SCRIPT MULTIPORT WS \E[0m"
-echo -e "\033[0;34m----------------------------------------\033[0m"
+echo -e "\e[1;38;5;220m----------------------------------------\e[0m"
+echo -e "\e[48;5;236m\e[1;38;5;214m      SCRIPT MULTIPORT WS \e[0m"
+echo -e "\e[1;38;5;220m----------------------------------------\e[0m"
 echo ""
 read -p " Select menu : " opt
 echo -e ""

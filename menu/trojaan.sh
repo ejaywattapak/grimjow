@@ -752,7 +752,7 @@ elif [[ "$num" = "x" ]]; then
 menu
 else
 clear
-echo -e "\e[1;31mYou Entered The Wrong Number, Please Try Again!\e[0m"
+echo -e "\e[1;38;5;220mYou Entered The Wrong Number, Please Try Again!\e[0m"
 sleep 1
 trojaan
 fi

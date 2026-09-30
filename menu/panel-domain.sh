@@ -17,8 +17,8 @@ number=$(cat /etc/number)
 # TEXT ON BOX COLOUR
 box=$(cat /etc/box)
 clear
-red='\e[1;31m'
-green='\e[0;32m'
+red='\e[1;38;5;220m'
+green='\e[38;5;252m'
 NC='\e[0m'
 MYIP=$(wget -qO- ifconfig.me/ip);
 clear
