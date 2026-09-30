@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Warna untuk teks
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-BLUE='\033[0;34m'
-PURPLE='\033[0;35m'
-CYAN='\033[0;36m'
-NC='\033[0m' # Tiada warna (reset)
+RED='\e[38;5;220m'
+GREEN='\e[38;5;252m'
+YELLOW='\e[1;38;5;220m'
+BLUE='\e[38;5;117m'
+PURPLE='\e[38;5;214m'
+CYAN='\e[38;5;117m'
+NC='\e[0m' # Tiada warna (reset)
 
 print_user_table() {
     local user="$1"
@@ -22,10 +22,10 @@ print_user_table() {
 CONFIG_FILE="/etc/noobzvpns/config.toml"
 
 edit_config() {
-    echo -e "${CYAN}Menu Edit Config /etc/noobzvpns/config.toml${NC}"
-    echo -e "${GREEN}1.${NC} Edit identifier"
-    echo -e "${GREEN}2.${NC} Buka config file location"
-    echo -e "${GREEN}0.${NC} Kembali ke menu utama"
+    echo -e "\e[1;97mMenu Edit Config /etc/noobzvpns/config.toml\e[0m"
+    echo -e "\e[1;38;5;117m1.\e[0m \e[38;5;252mEdit identifier\e[0m"
+    echo -e "\e[1;38;5;117m2.\e[0m \e[38;5;252mBuka config file location\e[0m"
+    echo -e "\e[1;38;5;117m0.\e[0m \e[38;5;252mKembali ke menu utama\e[0m"
     read -p "Pilih nombor: " choice
 
     case $choice in
@@ -56,18 +56,18 @@ edit_config() {
 
 while true; do
     clear
-    echo -e "${PURPLE}==================================${NC}"
-    echo -e "${BLUE}           NOOBZVPN MENU            ${NC}"
-    echo -e "${PURPLE}==================================${NC}"
-    echo -e "${GREEN}1.${NC}  Add User"
-    echo -e "${GREEN}2.${NC}  Edit User"
-    echo -e "${GREEN}3.${NC}  Rename User"
-    echo -e "${GREEN}4.${NC}  Block User"
-    echo -e "${GREEN}5.${NC}  Unblock User"
-    echo -e "${GREEN}6.${NC}  Renew User"
-    echo -e "${GREEN}7.${NC}  Reset User"
-    echo -e "${GREEN}8.${NC}  Remove User"
-    echo -e "${GREEN}9.${NC}  Show User"
+    echo -e "\e[1;38;5;220m==================================\e[0m"
+    echo -e "\e[48;5;236m\e[1;38;5;214m           NOOBZVPN MENU            \e[0m"
+    echo -e "\e[1;38;5;220m==================================\e[0m"
+    echo -e "\e[1;38;5;117m1.\e[0m  \e[38;5;252mAdd User\e[0m"
+    echo -e "\e[1;38;5;117m2.\e[0m  \e[38;5;252mEdit User\e[0m"
+    echo -e "\e[1;38;5;117m3.\e[0m  \e[38;5;252mRename User\e[0m"
+    echo -e "\e[1;38;5;117m4.\e[0m  \e[38;5;252mBlock User\e[0m"
+    echo -e "\e[1;38;5;117m5.\e[0m  \e[38;5;252mUnblock User\e[0m"
+    echo -e "\e[1;38;5;117m6.\e[0m  \e[38;5;252mRenew User\e[0m"
+    echo -e "\e[1;38;5;117m7.\e[0m  \e[38;5;252mReset User\e[0m"
+    echo -e "\e[1;38;5;117m8.\e[0m  \e[38;5;252mRemove User\e[0m"
+    echo -e "\e[1;38;5;117m9.\e[0m  \e[38;5;252mShow User\e[0m"
     echo -e "${GREEN}10.${NC} Show All Users"
     echo -e "${GREEN}11.${NC} OPTS (Advanced Dangerous Ops)"
     echo -e "${GREEN}12.${NC} Developer/Test Mode"
@@ -78,8 +78,8 @@ while true; do
     echo -e "${GREEN}17.${NC} Disable Auto Start Service"
     echo -e "${GREEN}18.${NC} Check Service Status"
     echo -e "${GREEN}19.${NC} Change identifier or open config file"
-    echo -e "${GREEN}0.${NC}  Exit"
-    echo -e "${PURPLE}==================================${NC}"
+    echo -e "\e[1;38;5;117m0.\e[0m  \e[38;5;252mExit\e[0m"
+    echo -e "\e[1;38;5;220m==================================\e[0m"
     read -p "Sila pilih menu: " opt
 
     case $opt in
@@ -195,9 +195,9 @@ while true; do
             read -n 1 -s -r -p "Tekan sebarang kekunci untuk kembali ke menu..."
             ;;
         11)
-            echo -e "${GREEN}1.${NC} Renew All User"
-            echo -e "${GREEN}2.${NC} Reset All Statistic"
-            echo -e "${GREEN}3.${NC} Remove All User"
+            echo -e "\e[1;38;5;117m1.\e[0m \e[38;5;252mRenew All User\e[0m"
+            echo -e "\e[1;38;5;117m2.\e[0m \e[38;5;252mReset All Statistic\e[0m"
+            echo -e "\e[1;38;5;117m3.\e[0m \e[38;5;252mRemove All User\e[0m"
             read -p "Pilih (1/2/3): " adv
             case $adv in
                 1) eval "noobzvpns opts --renew-all" ;;

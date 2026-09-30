@@ -5,19 +5,19 @@
 # Author: NevermoreSSH
 # =========================================
 # Warna
-line="38;5;208"         # Oyen terang
-GREEN="\e[92m" # hijau
-WHITE="\033[1;37m"
-PINK="\e[38;5;205m" # Pink terang
-back_text="1;37;44"  # Putih + biru gelap
-box="1;37"           # Putih bold
+line="1;38;5;220"         # Oyen terang
+GREEN="\e[38;5;220m" # hijau
+WHITE="\e[1;97m"
+PINK="\e[38;5;214m" # Pink terang
+back_text="48;5;236"  # Putih + biru gelap
+box="1;38;5;214"           # Putih bold
 # ============================
 # COLOR THEME PREMIUM
 # ============================
-text="1;37"          # Putih bold (info text)
-title="\e[30;107m"   # 30 = hitam, 107 = background putih
-number="\e[38;5;205"        # Kuning gold (untuk nombor menu)
-below="0;37"         # Putih lembut
+text="1;97"          # Putih bold (info text)
+title="\e[48;5;236m\e[1;38;5;214m"   # 30 = hitam, 107 = background putih
+number="\e[1;38;5;117"        # Kuning gold (untuk nombor menu)
+below="38;5;252"         # Putih lembut
 reset="\e[0m"
 
 # Detect IPv4
@@ -38,26 +38,26 @@ echo ""
 echo -e "\e[${line}m═══════════════════════════════════════════════${reset}"
 echo -e "\e[${title}        [ IP Menu - IPv4 / IPv6 Toggle ]       ${reset}"
 echo -e "\e[${line}m═══════════════════════════════════════════════${reset}
-\033[1;37mIPv4v6 Changer By ejaywattapak\033[0m
-\033[1;37mTelegram : https://t.me/ejaywattapak \033[0m"
+\e[1;97mIPv4v6 Changer By ejaywattapak\e[0m
+\e[1;97mTelegram : https://t.me/ejaywattapak \e[0m"
 echo ""
 
-echo -e " IPv4 Address      : \033[1;32m$IPV4${reset}"
-echo -e " IPv6 Link-Local   : \033[1;36m$IPV6_LL${reset}"
-echo -e " IPv6 Global       : \033[1;36m$IPV6${reset}"
-echo -e " IPv6 Status       : \033[1;33m$IPV6_STATUS${reset}"
+echo -e " IPv4 Address      : \e[38;5;220m$IPV4${reset}"
+echo -e " IPv6 Link-Local   : \e[1;38;5;117m$IPV6_LL${reset}"
+echo -e " IPv6 Global       : \e[1;38;5;117m$IPV6${reset}"
+echo -e " IPv6 Status       : \e[1;38;5;220m$IPV6_STATUS${reset}"
 echo ""
 
-echo -e " [\033[1;36m•1\033[0m]  \e[${below}mIPv4 Only (Disable IPv6)${reset}"
-echo -e " [\033[1;36m•2\033[0m]  \e[${below}mIPv4 + IPv6 (Enable IPv6)${reset}"
-echo -e " [\033[1;36m•3\033[0m]  \e[${below}mReboot Server${reset}"
+echo -e " [\e[1;38;5;117m•1\e[0m]  \e[${below}mIPv4 Only (Disable IPv6)${reset}"
+echo -e " [\e[1;38;5;117m•2\e[0m]  \e[${below}mIPv4 + IPv6 (Enable IPv6)${reset}"
+echo -e " [\e[1;38;5;117m•3\e[0m]  \e[${below}mReboot Server${reset}"
 echo ""
-echo -e " [\033[1;36m•0\033[0m]  \e[${below}mBack To Menu${reset}"
+echo -e " [\e[1;38;5;117m•0\e[0m]  \e[${below}mBack To Menu${reset}"
 echo "
  Notes: 
  - Please restart / reboot server after change IPv4v6."
 echo ""
-echo -e "\033[1;37mPress [ Ctrl+C ] • To Exit Script${reset}"
+echo -e "\e[38;5;252mPress [ Ctrl+C ] • To Exit Script${reset}"
 echo ""
 echo -e "\e[${below}m"
 

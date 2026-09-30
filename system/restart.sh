@@ -1,12 +1,12 @@
 #!/bin/bash
 GitUser="ejaywattapak"
 #Colour
-white='\e[0;37m'
-green='\e[0;32m'
-red='\e[0;31m'
-blue='\e[0;34m'
-cyan='\e[0;36m'
-yellow='\e[0;33m'
+white='\e[97m'
+green='\e[38;5;252m'
+red='\e[38;5;220m'
+blue='\e[38;5;117m'
+cyan='\e[38;5;117m'
+yellow='\e[38;5;220m'
 NC='\e[0m'
 clear
 #IZIN SCRIPT
@@ -16,9 +16,9 @@ MYIP=$(curl -sS ipv4.icanhazip.com)
 MYIP=$(curl -sS ifconfig.me )
 clear
 echo -e ""
-echo -e "${blue}══════════════════════════════════════${NC}"
-echo -e "\\E[0;46;30m         RESTART VPN SERVICE          \e[0m"
-echo -e "${blue}══════════════════════════════════════${NC}"
+echo -e "\e[1;38;5;220m══════════════════════════════════════\e[0m"
+echo -e "\e[48;5;236m\e[1;38;5;214m         RESTART VPN SERVICE          \e[0m"
+echo -e "\e[1;38;5;220m══════════════════════════════════════\e[0m"
 echo -e "  $green[${white}1${green}] ${green} Restart All Services$NC"
 echo -e "  $green[${white}2${green}] ${green} Restart OpenSSH$NC"
 echo -e "  $green[${white}3${green}] ${green} Restart Dropbear$NC"
@@ -30,9 +30,9 @@ echo -e "  $green[${white}8${green}] ${green} Restart Xray Core$NC"
 echo -e "  $green[${white}9${green}] ${green} Restart Badvpn$NC"
 echo -e "  $green[${white}10${green}] ${green}Restart OHP $NC"
 echo -e "  $green[${white}11${green}] ${green}Restart WebSocket$NC"
-echo -e "${blue}══════════════════════════════════════${NC}"
-echo -e "\\E[0;46;30m        x)   MENU                     ${NC}"
-echo -e "${blue}══════════════════════════════════════${NC}"
+echo -e "\e[1;38;5;220m══════════════════════════════════════\e[0m"
+echo -e "\e[48;5;236m\e[1;38;5;214m        x)   MENU                     ${NC}"
+echo -e "\e[1;38;5;220m══════════════════════════════════════\e[0m"
 echo -e ""
 read -p "    Select From Options [1-12 or x] :" Restart
 echo -e ""
@@ -63,7 +63,7 @@ case $Restart in
                 echo -e ""
                 echo -e "======================================"
                 echo -e ""
-                echo -e "          \e[0;32mALL Service Restarted\e[0m         "
+                echo -e "          \e[38;5;252mALL Service Restarted\e[0m         "
                 echo -e ""
                 echo -e "======================================"
 				echo ""
@@ -76,7 +76,7 @@ case $Restart in
                 echo -e ""
                 echo -e "======================================"
                 echo -e ""
-                echo -e "        \e[0;32mSSH Service Restarted\e[0m       "
+                echo -e "        \e[38;5;252mSSH Service Restarted\e[0m       "
                 echo -e ""
                 echo -e "======================================"
 				echo ""
@@ -89,7 +89,7 @@ case $Restart in
                 echo -e ""
                 echo -e "======================================"
                 echo -e ""
-                echo -e "       \e[0;32mDropbear Service Restarted\e[0m     "
+                echo -e "       \e[38;5;252mDropbear Service Restarted\e[0m     "
                 echo -e ""
                 echo -e "======================================"
 				echo ""
@@ -102,7 +102,7 @@ case $Restart in
                 echo -e ""
                 echo -e "======================================"
                 echo -e ""
-                echo -e "        \e[0;32mStunnel4 Service Restarted\e[0m    "
+                echo -e "        \e[38;5;252mStunnel4 Service Restarted\e[0m    "
                 echo -e ""
                 echo -e "======================================"
 				echo ""
@@ -117,7 +117,7 @@ case $Restart in
                 echo -e ""
                 echo -e "======================================"
                 echo -e ""
-                echo -e "       \e[0;32mOpenVPN Service Restarted\e[0m      "
+                echo -e "       \e[38;5;252mOpenVPN Service Restarted\e[0m      "
                 echo -e ""
                 echo -e "======================================"
 				echo ""
@@ -130,7 +130,7 @@ case $Restart in
                 echo -e ""
                 echo -e "======================================"
                 echo -e ""
-                echo -e "        \e[0;32mSquid3 Service Restarted\e[0m      "
+                echo -e "        \e[38;5;252mSquid3 Service Restarted\e[0m      "
                 echo -e ""
                 echo -e "======================================"
 				echo ""
@@ -143,7 +143,7 @@ case $Restart in
                 echo -e ""
                 echo -e "======================================"
                 echo -e ""
-                echo -e "         \e[0;32mNginx Service Restarted\e[0m      "
+                echo -e "         \e[38;5;252mNginx Service Restarted\e[0m      "
                 echo -e ""
                 echo -e "======================================"
 				echo ""
@@ -158,7 +158,7 @@ case $Restart in
                 echo -e ""
                 echo -e "======================================"
                 echo -e ""
-                echo -e "         \e[0;32mXray Service Restart\e[0m         "
+                echo -e "         \e[38;5;252mXray Service Restart\e[0m         "
                 echo -e ""
                 echo -e "======================================"
 				echo ""
@@ -179,7 +179,7 @@ case $Restart in
                 echo -e ""
                 echo -e "======================================"
                 echo -e ""
-                echo -e "       \e[0;32mBadvpn Service Restarted\e[0m     "
+                echo -e "       \e[38;5;252mBadvpn Service Restarted\e[0m     "
                 echo -e ""
                 echo -e "======================================"
 				echo ""
@@ -194,7 +194,7 @@ case $Restart in
                 echo -e ""
                 echo -e "======================================"
                 echo -e ""
-                echo -e "         \e[0;32mOHP Service Restarted\e[0m     "
+                echo -e "         \e[38;5;252mOHP Service Restarted\e[0m     "
                 echo -e ""
                 echo -e "======================================"
 				echo ""
@@ -208,7 +208,7 @@ case $Restart in
                 echo -e ""
                 echo -e "======================================"
                 echo -e ""
-                echo -e "      \e[0;32mWebSocket Service Restarted\e[0m     "
+                echo -e "      \e[38;5;252mWebSocket Service Restarted\e[0m     "
                 echo -e ""
 	            echo -e "======================================"
 				echo ""

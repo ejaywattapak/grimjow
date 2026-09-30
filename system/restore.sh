@@ -22,10 +22,10 @@ back_text=$(cat /etc/back)
 # NUMBER COLOUR
 number=$(cat /etc/number)
 
-red='\e[1;31m'
-green='\e[0;32m'
-purple='\e[0;35m'
-orange='\e[0;33m'
+red='\e[1;38;5;220m'
+green='\e[38;5;252m'
+purple='\e[38;5;214m'
+orange='\e[38;5;220m'
 NC='\e[0m'
 clear
 echo ""

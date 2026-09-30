@@ -31,7 +31,7 @@ chmod +x /usr/local/bin/reboot
 fi
 
 # Auto Reboot
-Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_prefix="\033[42;37m" && Red_background_prefix="\033[41;37m" && Font_color_suffix="\033[0m"
+Green_font_prefix="\e[38;5;252m" && Red_font_prefix="\e[38;5;220m" && Green_background_prefix="\e[48;5;236m\e[97m" && Red_background_prefix="\e[48;5;236m\e[97m" && Font_color_suffix="\e[0m"
 Info1="Auto Reboot set every 1 hour ${Green_font_prefix}[ON]${Font_color_suffix}"
 Info2="Auto Reboot set every 6 hour ${Green_font_prefix}[ON]${Font_color_suffix}"
 Info3="Auto Reboot set every 12 hours ${Green_font_prefix}[ON]${Font_color_suffix}"
@@ -48,70 +48,70 @@ rm -f /etc/cron.d/reboot
 echo "59 * * * * root /sbin/reboot" > /etc/cron.d/reboot
 echo "start1" > /home/autoreboot
 echo -e "Auto-Reboot has been set every an hour"
-echo -e "\e[0;32mDone\e[0m"
+echo -e "\e[38;5;252mDone\e[0m"
 }
 function every_6_hours () {
 rm -f /etc/cron.d/reboot
 echo "0 */6 * * * root /sbin/reboot" > /etc/cron.d/reboot
 echo "start2" > /home/autoreboot
 echo -e "Auto-Reboot has been successfully set every 6 hours"
-echo -e "\e[0;32mDone\e[0m"
+echo -e "\e[38;5;252mDone\e[0m"
 }
 function every_12_hours () {
 rm -f /etc/cron.d/reboot
 echo "0 */12 * * * root /sbin/reboot" > /etc/cron.d/reboot
 echo "start3" > /home/autoreboot
 echo -e "Auto-Reboot has been successfully set every 12 hours"
-echo -e "\e[0;32mDone\e[0m"
+echo -e "\e[38;5;252mDone\e[0m"
 }
 function set_once_a_day () {
 rm -f /etc/cron.d/reboot
 echo "0 0 * * * root /sbin/reboot" > /etc/cron.d/reboot
 echo "start4" > /home/autoreboot
 echo -e "Auto-Reboot has been successfully set once a day"
-echo -e "\e[0;32mDone\e[0m"
+echo -e "\e[38;5;252mDone\e[0m"
 }
 function set_once_a_week () {
 rm -f /etc/cron.d/reboot
 echo "0 0 */7 * * root /sbin/reboot" > /etc/cron.d/reboot
 echo "start5" > /home/autoreboot
 echo -e "Auto-Reboot has been successfully set once a week"
-echo -e "\e[0;32mDone\e[0m"
+echo -e "\e[38;5;252mDone\e[0m"
 }
 function once_a_month () {
 rm -f /etc/cron.d/reboot
 echo "0 0 * 1 * root /sbin/reboot" > /etc/cron.d/reboot
 echo "start6" > /home/autoreboot
 echo -e "Auto-Reboot has been successfully set once a month"
-echo -e "\e[0;32mDone\e[0m"
+echo -e "\e[38;5;252mDone\e[0m"
 }
 function set_every_00 () {
 rm -f /etc/cron.d/reboot
 echo "0 0 * * * root /sbin/reboot" > /etc/cron.d/reboot
 echo "start7" > /home/autoreboot
 echo -e "Auto-Reboot has been successfully set Every 00.00am"
-echo -e "\e[0;32mDone\e[0m"
+echo -e "\e[38;5;252mDone\e[0m"
 }
 function set_every_02 () {
 rm -f /etc/cron.d/reboot
 echo "0 2 * * * root /sbin/reboot" > /etc/cron.d/reboot
 echo "start8" > /home/autoreboot
 echo -e "Auto-Reboot has been successfully set Every 02.00am"
-echo -e "\e[0;32mDone\e[0m"
+echo -e "\e[38;5;252mDone\e[0m"
 }
 function set_every_04 () {
 rm -f /etc/cron.d/reboot
 echo "0 4 * * * root /sbin/reboot" > /etc/cron.d/reboot
 echo "start9" > /home/autoreboot
 echo -e "Auto-Reboot has been successfully set Every 04.00am"
-echo -e "\e[0;32mDone\e[0m"
+echo -e "\e[38;5;252mDone\e[0m"
 }
 function stop () {
 rm -f /etc/cron.d/reboot
 sleep 0]5
 echo > /home/autoreboot
 echo -e "Auto-Reboot has been successfully Turn Off"
-echo -e "\e[0;32mDone\e[0m"
+echo -e "\e[38;5;252mDone\e[0m"
 }
 function deleted () {
 echo "" > /root/log-reboot]txt
@@ -188,8 +188,8 @@ elif [[ "$num" = "11" ]]; then
 if [ ! -e /root/log-reboot]txt ]; then
 	echo "No reboot activity found"
 	else 
-	echo -e "\e[1;36mLOG REBOOT\e[0m"
-	echo -e "\e[1;33m----------\e[0m"
+	echo -e "\e[1;38;5;117mLOG REBOOT\e[0m"
+	echo -e "\e[1;38;5;220m----------\e[0m"
 	cat /root/log-reboot]txt
 fi
 elif [[ "$num" = "12" ]]; then
@@ -197,5 +197,5 @@ echo "" > /root/log-reboot]txt
 echo -e "${GREEN}Auto Reboot Log successfully deleted!${NC}"
 else
 clear
-echo -e "\e[1;31mYou Entered The Wrong Number, Please Try Again!\e[0m"
+echo -e "\e[1;38;5;220mYou Entered The Wrong Number, Please Try Again!\e[0m"
 fi

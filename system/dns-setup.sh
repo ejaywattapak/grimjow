@@ -52,16 +52,16 @@ menu
 # MENU XRAY VMESS & VLESS
 clear
 dns="$(cat /etc/resolvconf/resolv.conf.d/head)"
-echo -e "\033[0;34m╒════════════════════════════════════════════╕\033[0m"
-echo -e " \\E[0;41;36m                DNS CHANGER                 \E[0m"
-echo -e "\033[0;34m╘════════════════════════════════════════════╛\033[0m"
+echo -e "\e[1;38;5;220m╒════════════════════════════════════════════╕\e[0m"
+echo -e " \e[48;5;236m\e[1;38;5;214m                DNS CHANGER                 \e[0m"
+echo -e "\e[1;38;5;220m╘════════════════════════════════════════════╛\e[0m"
 echo "DNS Changer"
 echo -e ""
-echo -e "   \e[0;32m Active DNS : $dns \033[0m"
+echo -e "   \e[38;5;252m Active DNS : $dns \e[0m"
 echo -e ""
-echo -e " [\e[36m•1 \e[0m] INPUT DNS TEMPORARY.REBOOT VPS FOR RETURN TO INITIAL DNS"
-echo -e " [\e[36m•2 \e[0m] INPUT DNS PERMANENTLY"
-echo -e " [\e[36m•3 \e[0m] BACK TO MAIN MENU"
+echo -e " [\e[1;38;5;117m•1 \e[0m] INPUT DNS TEMPORARY.REBOOT VPS FOR RETURN TO INITIAL DNS"
+echo -e " [\e[1;38;5;117m•2 \e[0m] INPUT DNS PERMANENTLY"
+echo -e " [\e[1;38;5;117m•3 \e[0m] BACK TO MAIN MENU"
 echo -e ""
 echo  "Press [ Ctrl+C ] • To-Exit-Script"
 echo -e ""
@@ -75,7 +75,7 @@ elif [[ "$num" = "3" ]]; then
 menu3
 else
 clear
-echo -e "\e[1;31mYou Entered The Wrong Number, Please Try Again!\e[0m"
+echo -e "\e[38;5;220mYou Entered The Wrong Number, Please Try Again!\e[0m"
 sleep 1
 dns
 fi

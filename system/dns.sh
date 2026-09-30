@@ -5,38 +5,38 @@
 # Auther  : ejaywattapak
 # (C) Copyright 2022
 # =========================================
-P='\e[0;35m'
-B='\033[0;36m'
-G='\033[0;32m'
+P='\e[38;5;214m'
+B='\e[38;5;117m'
+G='\e[38;5;252m'
 NC='\e[0m'
 N='\e[0m'
 clear
-echo -e "\e[36m╒════════════════════════════════════════════╕\033[0m"
-echo -e " \E[0;47;30m                 DNS CHANGER                \E[0m"
-echo -e "\e[36m╘════════════════════════════════════════════╛\033[0m
-\033[1;37mDNS Changer By ejaywattapak\033[0m
-\033[1;37mTelegram : https://t.me/ejaywattapak \033[0m"
+echo -e "\e[1;38;5;220m╒════════════════════════════════════════════╕\e[0m"
+echo -e " \e[48;5;236m\e[1;38;5;214m                 DNS CHANGER                \e[0m"
+echo -e "\e[1;38;5;220m╘════════════════════════════════════════════╛\e[0m
+\e[1;97mDNS Changer By ejaywattapak\e[0m
+\e[1;97mTelegram : https://t.me/ejaywattapak \e[0m"
 dnsfile="/root/dns"
 if test -f "$dnsfile"; then
 udns=$(cat /root/dns)
 echo -e ""
-echo -e "   Active DNS : \033[1;37m$udns\033[0m"
+echo -e "   Active DNS : \e[38;5;252m$udns\e[0m"
 fi
 echo -e "
- [\033[1;36m•1 \033[0m]  Temporary DNS
- [\033[1;36m•2 \033[0m]  Permanent DNS
- [\033[1;36m•3 \033[0m]  Reset DNS To Default
- [\033[1;36m•4 \033[0m]  Update resolv.conf Latest
- [\033[1;36m•5 \033[0m]  Back To Main Menu"
+ [\e[1;38;5;117m•1 \e[0m]  Temporary DNS
+ [\e[1;38;5;117m•2 \e[0m]  Permanent DNS
+ [\e[1;38;5;117m•3 \e[0m]  Reset DNS To Default
+ [\e[1;38;5;117m•4 \e[0m]  Update resolv.conf Latest
+ [\e[1;38;5;117m•5 \e[0m]  Back To Main Menu"
 echo ""
-echo -e "\033[1;37mPress [ Ctrl+C ] • To-Exit-Script\033[0m"
+echo -e "\e[38;5;252mPress [ Ctrl+C ] • To-Exit-Script\e[0m"
 echo ""
 read -p "Select From Options [ 1 - 5 ] :  " dns
 echo -e ""
 case $dns in
 1)
 clear
-echo -e "\033[1;37mTemporary DNS - Back To Default DNS After Rebooting VPS\033[0m"
+echo -e "\e[1;97mTemporary DNS - Back To Default DNS After Rebooting VPS\e[0m"
 echo ""
 read -p "Please Insert DNS : " dns1
 if [ -z $dns1 ]; then
@@ -52,7 +52,7 @@ echo "$dns1" > /root/dns
 echo "nameserver $dns1" >> /etc/resolv.conf
 systemctl restart resolvconf.service
 echo ""
-echo -e "\e[032;1mDNS $dns1 sucessfully insert in VPS\e[0m"
+echo -e "\e[38;5;252mDNS $dns1 sucessfully insert in VPS\e[0m"
 echo ""
 cat /etc/resolv.conf
 sleep 1
@@ -79,7 +79,7 @@ echo "nameserver $dns2" >> /etc/resolv.conf
 echo "nameserver $dns2" >> /etc/resolvconf/resolv.conf.d/head
 systemctl restart resolvconf.service
 echo ""
-echo -e "\e[032;1mDNS $dns2 sucessfully insert in VPS\e[0m"
+echo -e "\e[38;5;252mDNS $dns2 sucessfully insert in VPS\e[0m"
 echo ""
 cat /etc/resolvconf/resolv.conf.d/head
 sleep 1

@@ -7,27 +7,27 @@
 # (C) Copyright 2025 - 2026
 # =========================================
 # Warna
-line="38;5;208"         # Oyen terang
-GREEN="\e[92m" # hijau
-WHITE="\033[1;37m"
-PINK="\e[38;5;205m" # Pink terang
-back_text="1;37;44"  # Putih + biru gelap
-box="1;37"           # Putih bold
+line="1;38;5;220"         # Oyen terang
+GREEN="\e[38;5;220m" # hijau
+WHITE="\e[1;97m"
+PINK="\e[38;5;214m" # Pink terang
+back_text="48;5;236"  # Putih + biru gelap
+box="1;38;5;214"           # Putih bold
 # ============================
 # COLOR THEME PREMIUM
 # ============================
-text="1;37"          # Putih bold (info text)
-title="\e[30;107m"   # 30 = hitam, 107 = background putih
-number="\e[38;5;205"        # Kuning gold (untuk nombor menu)
-below="0;37"         # Putih lembut
+text="1;97"          # Putih bold (info text)
+title="\e[48;5;236m\e[1;38;5;214m"   # 30 = hitam, 107 = background putih
+number="\e[1;38;5;117m"        # Kuning gold (untuk nombor menu)
+below="38;5;252"         # Putih lembut
 reset="\e[0m"
 
 # Colors
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-BLUE='\033[0;34m'
-NC='\033[0m' # No Color
+RED='\e[38;5;220m'
+GREEN='\e[38;5;252m'
+YELLOW='\e[1;38;5;220m'
+BLUE='\e[38;5;117m'
+NC='\e[0m' # No Color
 
 # Add line if not exists
 Add_Line_If_Not_Exist(){
@@ -115,18 +115,18 @@ while true; do
     echo -e "\e[${line}m═══════════════════════════════════════════${reset}"
     echo -e "\e[${title}       [ BBR Manager + Optimizer ]         ${reset}"
     echo -e "\e[${line}m═══════════════════════════════════════════${reset}
-\033[1;37mBBR Manager By ejaywattapak\033[0m
-\033[1;37mTelegram : https://t.me/ejaywattapak \033[0m"
+\e[1;97mBBR Manager By ejaywattapak\e[0m
+\e[1;97mTelegram : https://t.me/ejaywattapak \e[0m"
 	echo -e " "
     check_status
 	echo -e " "
-    echo -e "${YELLOW}Select an option:${NC}"
-    echo -e "${WHITE}1) Enable BBR${NC}"
-    echo -e "${WHITE}2) Disable BBR${NC}"
-    echo -e "${WHITE}3) Optimize system parameters${NC}"
-    echo -e "${WHITE}4) Check BBR status${NC}"
+    echo -e "\e[1;38;5;220mSelect an option:\e[0m"
+    echo -e "\e[1;38;5;117m1)\e[0m \e[38;5;252mEnable BBR\e[0m"
+    echo -e "\e[1;38;5;117m2)\e[0m \e[38;5;252mDisable BBR\e[0m"
+    echo -e "\e[1;38;5;117m3)\e[0m \e[38;5;252mOptimize system parameters\e[0m"
+    echo -e "\e[1;38;5;117m4)\e[0m \e[38;5;252mCheck BBR status\e[0m"
 	echo -e " "
-    echo -e "${RED}0) Back to menu${NC}"
+    echo -e "\e[1;38;5;117m0)\e[0m \e[38;5;252mBack to menu\e[0m"
     read -p "Enter choice [0-4]: " choice
 
     case $choice in

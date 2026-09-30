@@ -1,8 +1,8 @@
 #!/bin/bash
 # // CODE WARNA
-export RED='\e[1;31m'
-export GREEN='\e[0;32m'
-export BLUE='\e[0;34m'
+export RED='\e[1;38;5;220m'
+export GREEN='\e[38;5;252m'
+export BLUE='\e[38;5;117m'
 export NC='\e[0m'
 
 #wget https://github.com/${GitUser}/
@@ -21,9 +21,9 @@ export emailcf=$(cat /usr/local/etc/xray/email)
 
 clear
 echo ""
-echo -e "\033[0;34m══════════════════════════════════════════\033[0m"
-echo -e "\E[44;1;39m                Add Domain                \E[0m"
-echo -e "\033[0;34m══════════════════════════════════════════\033[0m"
+echo -e "\e[38;5;117m══════════════════════════════════════════\e[0m"
+echo -e "\e[48;5;236m                Add Domain                \e[0m"
+echo -e "\e[38;5;117m══════════════════════════════════════════\e[0m"
 echo ""
 
 echo "Please Input Your Pointing Domain In Cloudflare "
@@ -39,10 +39,10 @@ rm -f /etc/xray/domain;
 echo "$host" > /etc/xray/domain
 
 echo ""
-echo -e "\e[1;32m════════════════════════════════════════════════════════════\e[0m"
+echo -e "\e[38;5;252m════════════════════════════════════════════════════════════\e[0m"
 echo ""
-echo -e "   \e[1;32mPlease enter your email Domain/Cloudflare."
-echo -e "   \e[1;31m(Press ENTER for default email)\e[0m"
+echo -e "   \e[38;5;252mPlease enter your email Domain/Cloudflare."
+echo -e "   \e[1;38;5;220m(Press ENTER for default email)\e[0m"
 
 # // EMAIL 
 read -p "   Email : " email
@@ -84,9 +84,9 @@ systemctl restart xray@none
 
 clear
 echo -e ""
-echo -e "\033[0;34m══════════════════════════════════════════\033[0m"
-echo -e "\E[44;1;39m        PERTUKARAN DOMAIN SELESAI         \E[0m"
-echo -e "\033[0;34m══════════════════════════════════════════\033[0m"
+echo -e "\e[38;5;117m══════════════════════════════════════════\e[0m"
+echo -e "\e[48;5;236m        PERTUKARAN DOMAIN SELESAI         \e[0m"
+echo -e "\e[38;5;117m══════════════════════════════════════════\e[0m"
 echo ""
 read -n 1 -s -r -p "Press any key to back on menu"
 menu

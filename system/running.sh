@@ -1,7 +1,7 @@
 #!/bin/bash
 
-export red="\e[1;31m"
-export green="\e[0;32m"
+export red="\e[1;38;5;220m"
+export green="\e[38;5;252m"
 export NC="\e[0m"
 
 # // GIT USER
@@ -27,9 +27,9 @@ else
 fi
 
 # // VPS ISP INFORMATION
-echo -e "\e[32mloading...\e[0m"
+echo -e "\e[38;5;252mloading...\e[0m"
 clear
-export ITAM='\033[0;30m'
+export ITAM='\e[30m'
 echo -e "$ITAM"
 export NAMAISP=$( curl -s ipinfo.io/org | cut -d " " -f 2-10  )
 export REGION=$( curl -s ipinfo.io/region )
@@ -120,11 +120,11 @@ export tipeos2=$(uname -m)
 # // DOMAIN
 export Domen="$(cat /usr/local/etc/xray/domain)"
 
-echo -e "\e[32mloading...\e[0m"
+echo -e "\e[38;5;252mloading...\e[0m"
 clear
 echo -e ""
 echo -e "Your VPS Information :"
-echo -e "\e[0;32mSCRIPT VPS\e[0m"
+echo -e "\e[38;5;252mSCRIPT VPS\e[0m"
 echo "-----------------------------------------------------------"
 echo "Operating System Information :"
 echo -e "VPS Type    : $typevps"
@@ -169,11 +169,11 @@ echo -e "Date        : $harini"
 echo -e "Time        : $jam ( WIB )"
 echo "-----------------------------------------------------------"
 echo -e ""
-echo -e "              \e[0;32m[\e[1;36mSYSTEM STATUS INFORMATION\e[0;32m]\e[0m"
-echo -e "             \e[0;34m=============================\e[0m"
+echo -e "              \e[38;5;252m[\e[1;38;5;117mSYSTEM STATUS INFORMATION\e[38;5;252m]\e[0m"
+echo -e "             \e[38;5;117m=============================\e[0m"
 echo -e ""
-echo -e "\e[1;33mSTATUS SSH & OPEN VPN:\e[0m"
-echo -e "\e[0;34m-----------------------\e[0m"
+echo -e "\e[1;38;5;220mSTATUS SSH & OPEN VPN:\e[0m"
+echo -e "\e[38;5;117m-----------------------\e[0m"
 
 status="$(systemctl show ssh.service --no-page)"
 status_text=$(echo "${status}" | grep 'ActiveState=' | cut -f2 -d=)
@@ -284,8 +284,8 @@ echo -e " OHP-OpenVPN             : "$red"not running (Error)"$NC" "
 fi
 
 echo -e ""
-echo -e "\e[1;33mSTATUS XRAY:\e[0m"
-echo -e "\e[0;34m-------------\e[0m"
+echo -e "\e[1;38;5;220mSTATUS XRAY:\e[0m"
+echo -e "\e[38;5;117m-------------\e[0m"
 
 status="$(systemctl show xray@config.service --no-page)"
 status_text=$(echo "${status}" | grep 'ActiveState=' | cut -f2 -d=)
@@ -396,8 +396,8 @@ echo -e " Xray Trojan Ws None     : "$red"not running (Error)"$NC" "
 fi
 
 echo -e ""
-echo -e "\e[1;33mSTATUS NOOBZVPN :\e[0m"
-echo -e "\e[0;34m--------------------\e[0m"
+echo -e "\e[1;38;5;220mSTATUS NOOBZVPN :\e[0m"
+echo -e "\e[38;5;117m--------------------\e[0m"
 status="$(systemctl show noobzvpns.service --no-page)"
 status_text=$(echo "${status}" | grep 'ActiveState=' | cut -f2 -d=)
 if [ "${status_text}" == "active" ]
@@ -408,8 +408,8 @@ echo -e " Noobzvpn                : "$red"not running (Error)"$NC" "
 fi
 
 echo -e ""
-echo -e "\e[1;33mSTATUS NGINX & SQUID:\e[0m"
-echo -e "\e[0;34m--------------------\e[0m"
+echo -e "\e[1;38;5;220mSTATUS NGINX & SQUID:\e[0m"
+echo -e "\e[38;5;117m--------------------\e[0m"
 status="$(systemctl show nginx.service --no-page)"
 status_text=$(echo "${status}" | grep 'ActiveState=' | cut -f2 -d=)
 if [ "${status_text}" == "active" ]
@@ -428,7 +428,7 @@ else
 echo -e " Squid                   : "$red"not running (Error)"$NC" "
 fi
 
-echo -e "\e[0;34m-----------------------------------------------------------\e[0m"
+echo -e "\e[38;5;117m-----------------------------------------------------------\e[0m"
 echo -e ""
 #echo -e "${green}JIKA TERDAPAT NOT RUNNING, PLEASE REPORT TO ADMIN FOR FIX$NC"
 echo ""

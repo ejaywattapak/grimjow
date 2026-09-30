@@ -1,20 +1,20 @@
 #!/bin/bash
 #Script Updater By ejaywattapak
 
-Font_Black="\033[30m";
-Font_Red="\033[31m";
-Font_Green="\033[32m";
-Font_Yellow="\033[33m";
-Font_Blue="\033[34m";
-Font_Purple="\033[35m";
-Font_SkyBlue="\033[36m";
-Font_White="\033[37m";
-Font_Suffix="\033[0m";
+Font_Black="\e[30m";
+Font_Red="\e[38;5;220m";
+Font_Green="\e[38;5;252m";
+Font_Yellow="\e[38;5;220m";
+Font_Blue="\e[38;5;117m";
+Font_Purple="\e[38;5;214m";
+Font_SkyBlue="\e[38;5;117m";
+Font_White="\e[97m";
+Font_Suffix="\e[0m";
 
 clear;
-echo -e "  \033[1;37m${Font_Purple}Media Stream Unlocker Test Mod By ejaywattapak${Font_Suffix}\033[0m";
-echo -e "  \033[1;37mVersion : 3.0 \033[0m";
-echo -e "  \033[1;37mTime    : $(date)\033[0m";
+echo -e "  \e[1;97m${Font_Purple}Media Stream Unlocker Test Mod By ejaywattapak${Font_Suffix}\e[0m";
+echo -e "  \e[1;97mVersion : 3.0 \e[0m";
+echo -e "  \e[1;97mTime    : $(date)\e[0m";
 
 # --- LOCALE FIX START ---
 if ! locale -a | grep -qi 'en_US.utf8'; then
@@ -320,7 +320,7 @@ function MediaUnlockTest() {
 }
 
 function global() {
-    echo -e "\n \033[1;37m${Font_Purple}-- Global --${Font_Suffix}\033[0m"
+    echo -e "\n \e[1;97m${Font_Purple}-- Global --${Font_Suffix}\e[0m"
     MediaUnlockTest_Netflix ${1};
     MediaUnlockTest_HotStar ${1};
     MediaUnlockTest_YouTube ${1};
@@ -363,7 +363,7 @@ if ! jq -V > /dev/null 2>&1; then
 fi
 
 echo "";
-echo -e " \033[1;37m${Font_Purple}-- IPV4 --${Font_Suffix}\033[0m";
+echo -e " \e[1;97m${Font_Purple}-- IPV4 --${Font_Suffix}\e[0m";
 check4=$(ping 1.1.1.1 -c 1 2>&1);
 if [[ "$check4" != *"unreachable"* ]] && [[ "$check4" != *"Unreachable"* ]]; then
     startcheck "${1}" "4";
@@ -373,7 +373,7 @@ else
 fi
 
 echo ""
-echo -e " \033[1;37m${Font_Purple}-- IPV6 --${Font_Suffix}\033[0m";
+echo -e " \e[1;97m${Font_Purple}-- IPV6 --${Font_Suffix}\e[0m";
 check6=$(ping6 240c::6666 -c 1 2>&1);
 if [[ "$check6" != *"unreachable"* ]] && [[ "$check6" != *"Unreachable"* ]]; then
     v6="1"
