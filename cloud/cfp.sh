@@ -6,8 +6,8 @@ MYIP=$(curl -s ipinfo.io/ip )
 MYIP=$(curl -sS ipv4.icanhazip.com)
 MYIP=$(curl -sS ifconfig.me )
 clear
-red='\e[1;31m'
-green='\e[0;32m'
+red='\e[1;38;5;220m'
+green='\e[38;5;252m'
 NC='\e[0m'
 MYIP=$(wget -qO- ifconfig.me/ip);
 clear
@@ -19,8 +19,8 @@ cloudflare=$(grep -c -E "^### " "/root/mail.conf")
 if [[ ${cloudflare} == '0' ]]; then
         echo ""
 		echo ""
-		echo -e "\e[1;31mYou Have No ID CLOUDFLARE! Please ADD ID Coudflare First.\e[0m"
-		echo -e "\e[1;31mBack To Main Menu, Thankyou.\e[0m"
+		echo -e "\e[1;38;5;220mYou Have No ID CLOUDFLARE! Please ADD ID Coudflare First.\e[0m"
+		echo -e "\e[1;38;5;220mBack To Main Menu, Thankyou.\e[0m"
 		exit 1
 	fi
 source /root/mail.conf
@@ -56,13 +56,13 @@ RESULT=$(curl -sLX PUT "https://api.cloudflare.com/client/v4/zones/${ZONE}/dns_r
      --data '{"type":"A","name":"'${sub}'","content":"'${IP}'","ttl":120,"proxied":false}')
 clear
 echo ""
-echo -e " \e[1;36mSuccesfully Add your Subdomain\e[0m"
-echo -e " \e[0;34m======================================\e[0m"
-echo -e " \e[0;33mDomain Name        :\e[0m $DOMAIN"
-echo -e " \e[0;33mSubdomain Name     :\e[0m ${sub}"
-echo -e " \e[0;33mYour IP Pointing   :\e[0m ${IP}"
-echo -e " \e[0;33mSub + Domain (Used):\e[0m ${sub}.$DOMAIN"
-echo -e " \e[0;34m======================================\e[0m"
+echo -e " \e[1;38;5;117mSuccesfully Add your Subdomain\e[0m"
+echo -e " \e[38;5;117m======================================\e[0m"
+echo -e " \e[38;5;220mDomain Name        :\e[0m $DOMAIN"
+echo -e " \e[38;5;220mSubdomain Name     :\e[0m ${sub}"
+echo -e " \e[38;5;220mYour IP Pointing   :\e[0m ${IP}"
+echo -e " \e[38;5;220mSub + Domain (Used):\e[0m ${sub}.$DOMAIN"
+echo -e " \e[38;5;117m======================================\e[0m"
 echo ""
-echo -e "\e[0;32mDONE...!\e[0m"
+echo -e "\e[38;5;252mDONE...!\e[0m"
 

@@ -17,13 +17,13 @@ echo -e "email=$email" >> /root/mail.conf
 echo -e "key=$key" >> /root/mail.conf
 echo -e "### $domain $email" >> /root/mail.conf
 clear
-echo -e "\e[0;32mDONE\e[0m"
-echo -e "\e[0;33mYour ID Cloudflare\e[0m"
-echo -e "\e[1;34m===============================\e[0m"
-echo -e "\e[0;36mDOMAIN         :\e[0m $domain"
-echo -e "\e[0;36mEmail          :\e[0m $email"
-echo -e "\e[0;36mApi Key        :\e[0m $key"
-echo -e "\e[1;34m===============================\e[0m"
-echo -e "\e[0;32mNow you can use & add subdomain.\e[0m"
-echo -e "\e[0;32mGo to main menu and chosee Add Subdomain to you ID Cloudflare or Pointing IP\e[0m"
-echo -e "\e[0;32mto you ID Cloudflare\e[0m"
+echo -e "\e[38;5;252mDONE\e[0m"
+echo -e "\e[38;5;220mYour ID Cloudflare\e[0m"
+echo -e "\e[1;38;5;117m===============================\e[0m"
+echo -e "\e[38;5;117mDOMAIN         :\e[0m $domain"
+echo -e "\e[38;5;117mEmail          :\e[0m $email"
+echo -e "\e[38;5;117mApi Key        :\e[0m $key"
+echo -e "\e[1;38;5;117m===============================\e[0m"
+echo -e "\e[38;5;252mNow you can use & add subdomain.\e[0m"
+echo -e "\e[38;5;252mGo to main menu and chosee Add Subdomain to you ID Cloudflare or Pointing IP\e[0m"
+echo -e "\e[38;5;252mto you ID Cloudflare\e[0m"
