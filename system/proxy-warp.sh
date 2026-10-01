@@ -1417,7 +1417,7 @@ ui_header(){
   printf '%b╒%s╕%b\n' "$UI_CYAN" "$(ui_repeat $((w-2)) '═')" "$UI_RESET"
   printf '%b' "$UI_WHITE$UI_BOLD"
   ui_center "$w" '[ EJAYWATT ]'
-  ui_center "$w" 'RDNS'
+  ui_center "$w" 'WARP MENU'
   printf '%b╘%s╛%b\n' "$UI_CYAN" "$(ui_repeat $((w-2)) '═')" "$UI_RESET"
 }
 
@@ -1453,7 +1453,7 @@ ui_footer(){
   echo
   printf '%b╒%s╕%b\n' "$UI_CYAN" "$(ui_repeat $((w-2)) '═')" "$UI_RESET"
   printf '%b' "$UI_CYAN$UI_BOLD"
-  ui_center "$w" 'RDNS MANAGER BY EJAYWATTAPAK'
+  ui_center "$w" 'WARP ENGINE ROUTING BY SIFUNIL'
   printf '%b╘%s╛%b\n' "$UI_CYAN" "$(ui_repeat $((w-2)) '═')" "$UI_RESET"
 }
 
