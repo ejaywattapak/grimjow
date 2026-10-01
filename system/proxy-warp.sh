@@ -253,6 +253,21 @@ pubgmobile.com
 igamecj.com
 gcloudcs.com
 tencentgames.com
+# ===== APPLE SERVICE =====
+apple.com
+icloud.com
+icloud-content.com
+apple-cloudkit.com
+mzstatic.com
+itunes.com
+itunes.apple.com
+push.apple.com
+# ===== WHATSAPP =====
+facebook.com
+fbcdn.net
+meta.com
+whatsapp.com
+whatsapp.net
 EOF
 }
 
