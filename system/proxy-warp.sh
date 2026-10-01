@@ -1458,9 +1458,23 @@ ui_footer(){
 }
 
 show_menu(){
-  local w="$1"
+  local w="$1" gm mode_label mode_color
   clear
   ui_header "$w"
+  echo
+
+  gm="$(get_global_mode)"
+  case "$gm" in
+    warp)   mode_label="WARP V1"; mode_color="$UI_ORANGE" ;;
+    warp2)  mode_label="WARP V2"; mode_color="$UI_ORANGE" ;;
+    direct) mode_label="FREEDOM"; mode_color="$UI_WHITE" ;;
+    socks5) mode_label="SOCKS5"; mode_color="$UI_BLUE" ;;
+    *)      mode_label="MIXED / UNKNOWN"; mode_color="$UI_CYAN" ;;
+  esac
+
+  ui_section "$w" 'CURRENT MODE'
+  printf '   %bMode :%b %b%s%b\n' "$UI_GREEN" "$UI_RESET" "$mode_color$UI_BOLD" "$mode_label" "$UI_RESET"
+  ui_section_end "$w"
   echo
 
   ui_section "$w" 'WARP MENU'
