@@ -21,7 +21,7 @@ Latest Xray Core
 ## ⚠️ PLEASE README ⚠️
 
 
- The original source was created by GRIMJOW, and I rebuilt it step by step until it was fully functional.
+ The original source named GRIMJOW, and I rebuilt it step by step until it was fully functional.
 
 The WARP menu in Menu 5 is based on the routing engine by Nilphreakz. I only modified and redesigned the menu interface without changing the core functionality.
   
