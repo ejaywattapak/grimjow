@@ -1365,117 +1365,136 @@ import_domains_file_all() {
   restart_xray_all
 }
 
-repeat(){ local n="$1" s="$2" out=""; while [ "$n" -gt 0 ]; do out="$out$s"; n=$((n-1)); done; printf '%s' "$out"; }
+# ===== UI ONLY =====
+UI_RESET=$'\e[0m'
+UI_BOLD=$'\e[1m'
+UI_DIM=$'\e[2m'
+UI_WHITE=$'\e[97m'
+UI_CYAN=$'\e[96m'
+UI_BLUE=$'\e[94m'
+UI_GREEN=$'\e[92m'
+UI_GREY=$'\e[90m'
 
-ui_width() {
-  local c; c="$(tput cols 2>/dev/null)"
-  case "$c" in ''|*[!0-9]*) c="${COLUMNS:-48}";; esac
-  case "$c" in ''|*[!0-9]*) c=48;; esac
-  local w=$((c-2)); [ "$w" -gt 54 ] && w=54; [ "$w" -lt 30 ] && w=30
-  printf '%s' "$w"
+ui_width(){
+  local c
+  c="$(tput cols 2>/dev/null || true)"
+  case "$c" in ''|*[!0-9]*) c="${COLUMNS:-70}";; esac
+  [ "$c" -gt 61 ] && c=61
+  [ "$c" -lt 52 ] && c=52
+  printf '%s' "$c"
 }
 
-hr(){ echo -e "${1}$(repeat "$UIW" '─')${RESET}"; }
-hrh(){ echo -e "${1}$(repeat "$UIW" '━')${RESET}"; }
-
-mode_badge() {
-  case "$1" in
-    warp)   echo -e "${GREEN}${BOLD}WARP V1${RESET}" ;;
-    warp2)  echo -e "${LIME}${BOLD}WARP V2${RESET}" ;;
-    direct) echo -e "${ORANGE}${BOLD}FREEDOM${RESET}" ;;
-    socks5) echo -e "${CYAN}${BOLD}SOCKS5${RESET}" ;;
-    *)      echo -e "${YELLOW}${BOLD}MIXED${RESET}" ;;
-  esac
-}
-socks_badge(){ if [ "$1" = "OFF" ]; then echo -e "${RED}${BOLD}OFF${RESET}"; else echo -e "${LIME}${BOLD}${1}${RESET}"; fi; }
-scope_badge(){ if [ "$1" = "all" ]; then echo -e "${RED}${BOLD}SEMUA trafik${RESET}"; else echo -e "${LIME}${BOLD}List sahaja${RESET}"; fi; }
-section(){ echo -e "  ${1}| ${BOLD}${WHITE}${2}${RESET}"; }
-
-print_header() {
-  hrh "$1"
-  echo -e "  ${BOLD}${WHITE}PROXY WARP MENU${RESET}"
-  echo -e "  ${DIM}${GREY}warp v1 . warp v2 . freedom . socks5${RESET}"
-  hrh "$1"
+ui_repeat(){
+  local n="$1" ch="$2" out=""
+  while [ "$n" -gt 0 ]; do out="${out}${ch}"; n=$((n-1)); done
+  printf '%s' "$out"
 }
 
-need_targets
+ui_center(){
+  local w="$1" s="$2" pad
+  pad=$(( (w-${#s})/2 ))
+  [ "$pad" -lt 0 ] && pad=0
+  printf '%*s%s\n' "$pad" '' "$s"
+}
+
+ui_header(){
+  local w="$1"
+  printf '%b╒%s╕%b\n' "$UI_CYAN" "$(ui_repeat $((w-2)) '═')" "$UI_RESET"
+  printf '%b' "$UI_WHITE$UI_BOLD"
+  ui_center "$w" '[ EJAYWATT ]'
+  ui_center "$w" 'RDNS'
+  printf '%b╘%s╛%b\n' "$UI_CYAN" "$(ui_repeat $((w-2)) '═')" "$UI_RESET"
+}
+
+ui_section(){
+  local w="$1" title="$2" label="[ $2 ]" inner=$((w-2)) avail left right
+  avail=$((inner-${#label}))
+  left=$((avail/2)); right=$((avail-left))
+  printf '%b╒%s%s%s%s╕%b\n' "$UI_CYAN$UI_BOLD" "$(ui_repeat "$left" '═')" "$label" "$(ui_repeat "$right" '═')" '' "$UI_RESET"
+}
+
+ui_section_end(){
+  local w="$1"
+  printf '%b╘%s╛%b\n' "$UI_CYAN$UI_BOLD" "$(ui_repeat $((w-2)) '═')" "$UI_RESET"
+}
+
+ui_item(){
+  local n="$1" label="$2" ntext
+  if [ "$n" -lt 10 ]; then ntext="•${n}"; else ntext="$n"; fi
+  printf '   %b(%s)%b %s\n' "$UI_GREEN$UI_BOLD" "$ntext" "$UI_RESET" "$label"
+}
+
+ui_item2(){
+  local n1="$1" l1="$2" n2="$3" l2="$4" a b
+  if [ "$n1" -lt 10 ]; then a="•${n1}"; else a="$n1"; fi
+  if [ "$n2" -lt 10 ]; then b="•${n2}"; else b="$n2"; fi
+  printf '   %b(%s)%b %-23s %b(%s)%b %s\n' \
+    "$UI_GREEN$UI_BOLD" "$a" "$UI_RESET" "$l1" \
+    "$UI_GREEN$UI_BOLD" "$b" "$UI_RESET" "$l2"
+}
+
+ui_footer(){
+  local w="$1"
+  echo
+  printf '%b╒%s╕%b\n' "$UI_CYAN" "$(ui_repeat $((w-2)) '═')" "$UI_RESET"
+  printf '%b' "$UI_CYAN$UI_BOLD"
+  ui_center "$w" 'RDNS MANAGER BY EJAYWATTAPAK'
+  printf '%b╘%s╛%b\n' "$UI_CYAN" "$(ui_repeat $((w-2)) '═')" "$UI_RESET"
+}
+
+show_menu(){
+  local w="$1"
+  clear
+  ui_header "$w"
+  echo
+
+  ui_section "$w" 'WARP MENU'
+  ui_item2 1 'WARP V1' 2 'WARP V2 WIREGUARD'
+  ui_item2 3 'FREEDOM' 4 'SOCKS5'
+  ui_section_end "$w"
+  echo
+
+  ui_section "$w" 'DOMAIN MENU'
+  ui_item2 5 'LIST DOMAIN' 6 'LOAD DOMAIN PRESET'
+  ui_item2 7 'ADD DOMAIN' 8 'DELETE DOMAIN'
+  ui_item2 9 'FLUSH DOMAINS' 10 'IMPORT DOMAIN FILE'
+  ui_item 11 'BYPASS / EXCLUDE'
+  ui_section_end "$w"
+  echo
+
+  ui_section "$w" 'SERVER MENU'
+  ui_item2 12 'EDIT SOCKS5 SERVER' 13 'RESTART XRAY'
+  ui_item2 14 'CLEANUP BACKUP' 0 'BACK TO MAIN MENU'
+  ui_section_end "$w"
+
+  ui_footer "$w"
+  echo
+  printf '%bChoose Option » %b' "$UI_CYAN$UI_BOLD" "$UI_RESET"
+}
 
 while true; do
-  clear
   UIW="$(ui_width)"
-  gm="$(get_global_mode)"; sk="$(get_global_socks)"; sc="$(get_global_scope)"
-  exclude_global_list; xc="${#EXCLUDE_GLOBAL[@]}"
-  case "$gm" in warp) BAR="$GREEN";; warp2) BAR="$LIME";; direct) BAR="$ORANGE";; socks5) BAR="$CYAN";; *) BAR="$YELLOW";; esac
-
-  print_header "$BAR"
-  echo
-  section "$VIOLET" "STATUS"
-  echo -e "   ${GREY}Mode  :${RESET} $(mode_badge "$gm")"
-  if [ "$gm" = "warp" ] || [ "$gm" = "warp2" ] || [ "$gm" = "socks5" ]; then
-    echo -e "   ${GREY}Scope :${RESET} $(scope_badge "$sc")"
-    if [ "$sc" = "all" ]; then
-      ft="$(get_fulltunnel_applied)"
-      if [ "$ft" = "yes" ]; then echo -e "   ${GREY}DNSfx :${RESET} ${GREEN}${BOLD}OK (AsIs + DNS direct + block QUIC)${RESET}"
-      else echo -e "   ${GREY}DNSfx :${RESET} ${RED}${BOLD}belum patch${RESET}"; fi
-    fi
-  fi
-  [ "$xc" -gt 0 ] && echo -e "   ${GREY}Bypass:${RESET} ${RED}${BOLD}${xc} domain${RESET} ${DIM}${GREY}-> direct${RESET}"
-  echo -e "   ${GREY}Socks :${RESET} $(socks_badge "$sk")  ${DIM}${GREY}(${WARP_ADDR}:${WARP_PORT})${RESET}"
-  echo -e "   ${GREY}Files :${RESET} ${PINK}${BOLD}${#CFG_LIST[@]}${RESET} ${GREY}config${RESET}"
-  hr "$VIOLET"
-
-  echo
-  section "$TEAL" "MODE"
-  echo -e "   ${GREEN}${BOLD}1${RESET}  ${WHITE}Enable WARP V1${RESET} ${DIM}${GREY}Warp SOCKS5 local 127.0.0.1${RESET}"
-  echo -e "   ${LIME}${BOLD}v${RESET}  ${WHITE}Enable WARP V2${RESET} ${DIM}${GREY}WireGuard Config dalam Xray${RESET}"
-  echo -e "   ${ORANGE}${BOLD}2${RESET}  ${WHITE}Set FREEDOM${RESET}    ${DIM}${GREY}semua traffic direct (default)${RESET}"
-  echo -e "   ${CYAN}${BOLD}3${RESET}  ${WHITE}Set SOCKS5${RESET}     ${DIM}${GREY}SOCKS5 Proxy${RESET}"
-  hr "$TEAL"
-
-  echo
-  section "$BLUE" "DOMAIN"
-  echo -e "   ${GOLD}${BOLD}p${RESET}  ${WHITE}Load preset${RESET}    ${DIM}${GREY}streaming/bank/Astro/Ott/CDN${RESET}"
-  echo -e "   ${GOLD}${BOLD}4${RESET}  ${WHITE}Add domain${RESET}     ${DIM}${GREY}multi${RESET}"
-  echo -e "   ${GOLD}${BOLD}5${RESET}  ${WHITE}Delete domain${RESET}  ${DIM}${GREY}by no.${RESET}"
-  echo -e "   ${RED}${BOLD}6${RESET}  ${WHITE}Flush domains${RESET}  ${DIM}${GREY}delete all domains${RESET}"
-  echo -e "   ${WHITE}${BOLD}7${RESET}  ${WHITE}Show domains${RESET}   ${DIM}${GREY}per file${RESET}"
-  echo -e "   ${VIOLET}${BOLD}i${RESET}  ${WHITE}Import file${RESET}    ${DIM}${GREY}txt list${RESET}"
-  echo -e "   ${RED}${BOLD}x${RESET}  ${WHITE}Exclude bypass${RESET} ${DIM}${GREY}exclude domain tertentu lalu warp/socks5${RESET}"
-  hr "$BLUE"
-
-  echo
-  section "$PINK" "SYSTEM"
-  echo -e "   ${CYAN}${BOLD}e${RESET}  ${WHITE}Edit SOCKS5 server${RESET}"
-  echo -e "   ${LIME}${BOLD}8${RESET}  ${WHITE}Restart Xray${RESET}   ${DIM}${GREY}config -> none${RESET}"
-  echo -e "   ${YELLOW}${BOLD}9${RESET}  ${WHITE}Cleanup backup${RESET}"
-  echo -e "   ${GREY}${BOLD}0${RESET}  ${WHITE}Kembali ke menu utama${RESET}"
-  hr "$PINK"
-
-  echo
-  echo -e "  ${DIM}${GREY}Tip: Ubah dns ke 1.1.1.1 jika guna WARP V1 (recommend)${RESET}"
-  echo -e "  ${DIM}${GREY}Note: Found some bugs? Fix it yourself :p${RESET}"
-  echo
-
-  read -rp "$(echo -e "  ${CYAN}${BOLD}Pilih:${RESET} ")" c
+  show_menu "$UIW"
+  read -r c
   case "$c" in
-    1)   do_warp ;;
-    v|V) enable_warp2_mode ;;
-    2)   do_freedom ;;
-    3)   enable_socks5_mode ;;
-    p|P) load_preset_all ;;
-    4)   add_domain_all ;;
-    5)   delete_domain_global_number ;;
-    6)   flush_domains_all ;;
-    7)   show_domains_all ;;
-    i|I) import_domains_file_all ;;
-    x|X) manage_exclude ;;
-    e|E) edit_socks5_server ;;
-    8)   restart_xray_all ;;
-    9)   cleanup_backups_all ;;
-    0)   exec menu ;;
-    *)   info "Invalid option" ;;
+    1)  do_warp ;;
+    2)  enable_warp2_mode ;;
+    3)  do_freedom ;;
+    4)  enable_socks5_mode ;;
+    5)  show_domains_all ;;
+    6)  load_preset_all ;;
+    7)  add_domain_all ;;
+    8)  delete_domain_global_number ;;
+    9)  flush_domains_all ;;
+    10) import_domains_file_all ;;
+    11) manage_exclude ;;
+    12) edit_socks5_server ;;
+    13) restart_xray_all ;;
+    14) cleanup_backups_all ;;
+    0) exec menu ;;
+    *) printf '%b\n' "${RED}${BOLD}Invalid option${RESET}"; sleep 1 ;;
   esac
-
-  echo
-  read -rp "$(echo -e "  ${DIM}${GREY}Tekan Enter untuk kembali...${RESET}")" _
+  printf '\n'
+  printf '%bPress Enter to continue...%b' "$UI_DIM$UI_GREY" "$UI_RESET"
+  read -r _
 done
