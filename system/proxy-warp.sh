@@ -54,12 +54,6 @@ nflxext.com
 nflximg.net
 nflxso.net
 nflxvideo.net
-# ===== YOUTUBE =====
-youtube.com
-youtu.be
-ytimg.com
-googlevideo.com
-ggpht.com
 # ===== DISNEY+ / HOTSTAR =====
 disneyplus.com
 disney-plus.net
