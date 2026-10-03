@@ -268,6 +268,18 @@ fbcdn.net
 meta.com
 whatsapp.com
 whatsapp.net
+# ===== YOUTUBE =====
+youtube.com
+youtu.be
+youtube-nocookie.com
+youtubei.googleapis.com
+youtube.googleapis.com
+youtube-ui.l.google.com
+ytimg.com
+googlevideo.com
+ggpht.com
+yt3.ggpht.com
+gvt2.com
 EOF
 }
 
