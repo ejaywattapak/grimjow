@@ -274,6 +274,14 @@ googlevideo.com
 ggpht.com
 yt3.ggpht.com
 gvt2.com
+# ===== TIKTOK =====
+tiktok.com
+tiktokcdn.com
+tiktokv.com
+tiktokcdn-us.com
+byteoversea.com
+ibytedtos.com
+muscdn.com
 EOF
 }
 
