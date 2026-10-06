@@ -303,6 +303,27 @@ loklok.com
 loklok.tv
 loklok.site
 loklok-app.com
+assets.nexverse.ai
+netpop-e792a-default-rtdb.asia-southeast1.firebasedatabase.app
+netpop-e792a.appspot.com
+vv.video.qq.com
+baidu.com
+agora.io
+easemob.com
+im.easemob.com
+com.tencent.thumbplayer.tcmedia.core.downloadproxy.net
+hh965423153181-g3jnp6lk7h3a6s7fbm2mhnvedahi871f.apps.googleusercontent.com
+support.google.com
+easevibe-c5c81.firebasestorage.app
+qq.com
+t.me
+agora.io
+easemob.com
+im.easemob.com
+assets.nexverse.ai
+netpop-e792a-default-rtdb.asia-southeast1.firebasedatabase.app
+netpop-e792a.appspot.com
+easevibe-c5c81.firebasestorage.app
 EOF
 }
 
