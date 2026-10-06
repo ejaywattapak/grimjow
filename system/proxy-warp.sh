@@ -290,6 +290,19 @@ google-analytics.com
 g.doubleclick.net
 pagead2.googlesyndication.com
 adservice.google.com
+# ===== LOKLOK =====
+meicaizi.com
+api.meicaizi.com
+h5.meicaizi.com
+test-api.meicaizi.com
+test-m.meicaizi.com
+test01-h5.meicaizi.com
+alpha-api.meicaizi.com
+alpha-h5.meicaizi.com
+loklok.com
+loklok.tv
+loklok.site
+loklok-app.com
 EOF
 }
 
