@@ -282,6 +282,14 @@ tiktokcdn-us.com
 byteoversea.com
 ibytedtos.com
 muscdn.com
+# ===== GOOGLE / YOUTUBE ADS =====
+googleadservices.com
+googlesyndication.com
+doubleclick.net
+google-analytics.com
+g.doubleclick.net
+pagead2.googlesyndication.com
+adservice.google.com
 EOF
 }
 
