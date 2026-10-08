@@ -222,27 +222,11 @@ googleapis.com
 1e100.net
 # ===== CDN MLBB =====
 mobilelegends.com
-api.mobilelegends.com
-mlapi.mobilelegends.com
-moba.mobilelegends.com
-play.mobilelegends.com
-event.mobilelegends.com
 moonton.com
-account.moonton.com
-api.moonton.com
 # ===== CDN ROBLOX =====
 roblox.com
-www.roblox.com
-api.roblox.com
-auth.roblox.com
-clientsettings.roblox.com
-gamepersistence.roblox.com
-games.roblox.com
-assetdelivery.roblox.com
-setup.rbxcdn.com
 rbxcdn.com
 # ===== PUBG MOBILE =====
-pubgmobile.com
 pubgmobile.com
 igamecj.com
 gcloudcs.com
@@ -288,40 +272,25 @@ googlesyndication.com
 doubleclick.net
 google-analytics.com
 g.doubleclick.net
-pagead2.googlesyndication.com
 adservice.google.com
 # ===== LOKLOK =====
 meicaizi.com
-api.meicaizi.com
-h5.meicaizi.com
-test-api.meicaizi.com
-test-m.meicaizi.com
-test01-h5.meicaizi.com
-alpha-api.meicaizi.com
-alpha-h5.meicaizi.com
 loklok.com
 loklok.tv
 loklok.site
 loklok-app.com
-assets.nexverse.ai
-netpop-e792a-default-rtdb.asia-southeast1.firebasedatabase.app
-netpop-e792a.appspot.com
+nexverse.ai
 vv.video.qq.com
 baidu.com
 agora.io
 easemob.com
-im.easemob.com
-com.tencent.thumbplayer.tcmedia.core.downloadproxy.net
-hh965423153181-g3jnp6lk7h3a6s7fbm2mhnvedahi871f.apps.googleusercontent.com
+downloadproxy.net
+googleusercontent.com
 support.google.com
-easevibe-c5c81.firebasestorage.app
+firebasestorage.app
 qq.com
 agora.io
-easemob.com
-im.easemob.com
-netpop-e792a-default-rtdb.asia-southeast1.firebasedatabase.app
-netpop-e792a.appspot.com
-easevibe-c5c81.firebasestorage.app
+appspot.com
 EOF
 }
 
