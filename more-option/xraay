@@ -1326,7 +1326,7 @@ sed -i '/#xray-vless-xtls-rprx-vision$/a\#vxtls '"$user $exp $harini $uuid"'\
 
 export vlesslink1="vless://${uuid}@${sts}${domain}:$xtls?security=tls&encryption=none&headerType=none&type=tcp&flow=xtls-rprx-vision&sni=bug.com#${user}_${exp}"
 
-systemctl restart xray.service
+systemctl restart xray@config.service xray@none.service
 
 cat > /home/vps/public_html/vlessxtls-$user.txt <<-END
 
@@ -1419,7 +1419,7 @@ sed -i '/#xray-vless-xtls-rprx-vision$/a\#vxtls '"$user $exp $harini $uuid"'\
 
 export vlesslink1="vless://${uuid}@${sts}${domain}:$xtls?security=tls&encryption=none&headerType=none&type=tcp&flow=xtls-rprx-vision&sni=$sni#${user}_${exp}"
 
-systemctl restart xray.service
+systemctl restart xray@config.service xray@none.service
 
 clear
 echo -e ""
@@ -1480,7 +1480,7 @@ export exp=$(grep -E "^#vxtls " "/usr/local/etc/xray/config.json" | cut -d ' ' -
 
 sed -i "/^#vxtls $user $exp $harini $uuid/,/^},{/d" /usr/local/etc/xray/config.json
 
-systemctl restart xray.service
+systemctl restart xray@config.service xray@none.service
 
 clear
 echo " Xray Vless Tcp Xtls Account Deleted Successfully"
@@ -1532,7 +1532,7 @@ export exp4=`date -d "$exp3 days" +"%Y-%m-%d"`
 
 sed -i "s/#vxtls $user $exp $harini $uuid/#vxtls $user $exp4 $harini $uuid/g" /usr/local/etc/xray/config.json
 
-systemctl restart xray.service
+systemctl restart xray@config.service xray@none.service
 service cron restart
 
 clear
