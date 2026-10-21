@@ -159,7 +159,7 @@ apt install -y dropbear
 cat > /etc/default/dropbear <<'EOF'
 NO_START=0
 DROPBEAR_PORT=143
-DROPBEAR_EXTRA_ARGS="-p 109 -p 22"
+DROPBEAR_EXTRA_ARGS="-p 109"
 DROPBEAR_BANNER="/etc/issue.net"
 EOF
 
@@ -193,6 +193,7 @@ mkdir -p /etc/dropbear
 [ -f /etc/dropbear/dropbear_rsa_host_key ]     || dropbearkey -t rsa -s 4096 -f /etc/dropbear/dropbear_rsa_host_key >/dev/null 2>&1 || true
 [ -f /etc/dropbear/dropbear_ecdsa_host_key ]   || dropbearkey -t ecdsa -f /etc/dropbear/dropbear_ecdsa_host_key >/dev/null 2>&1 || true
 [ -f /etc/dropbear/dropbear_ed25519_host_key ] || dropbearkey -t ed25519 -f /etc/dropbear/dropbear_ed25519_host_key >/dev/null 2>&1 || true
+[ -f /etc/dropbear/dropbear_dss_host_key ]     || dropbearkey -t dss -f /etc/dropbear/dropbear_dss_host_key >/dev/null 2>&1 || true
 
 # enable & restart dropbear
 systemctl enable dropbear

@@ -34,6 +34,7 @@ apt install curl socat xz-utils wget apt-transport-https gnupg gnupg2 gnupg1 dns
 # ===== Guna chrony sahaja (dipasang di bawah).
 DEBIAN_FRONTEND=noninteractive apt-get install -y socat cron bash-completion >/dev/null 2>&1 || true
 apt -y install chrony
+mkdir -p /var/log/chrony  # REBORN v3: elak warning statoverride / log dir tak wujud
 timedatectl set-ntp true
 systemctl enable chronyd >/dev/null 2>&1; systemctl restart chronyd >/dev/null 2>&1 || true
 systemctl enable chrony  >/dev/null 2>&1; systemctl restart chrony  >/dev/null 2>&1 || true
@@ -768,12 +769,10 @@ WantedBy=multi-user.target
 SHIM
 systemctl daemon-reload
 
-systemctl enable xray@none
-systemctl restart xray@none || true
-
-# ===== REBORN v2: pasang TEMPLATE xray@.service sendiri =====
+# ===== REBORN v3: pasang TEMPLATE xray@.service DAHULU (SEBELUM enable) =====
 # install-release.sh rasmi kadang tak letak template ini ->
-# "Unit file xray@none.service does not exist".
+# "Unit file xray@none.service does not exist". Susunan ni PENTING:
+# enable/restart xray@none mesti selepas template wujud.
 id www-data >/dev/null 2>&1 || useradd -r -M -s /usr/sbin/nologin www-data 2>/dev/null || useradd -r -M -s /sbin/nologin www-data 2>/dev/null || true
 if [ ! -f /etc/systemd/system/xray@.service ]; then
 cat > /etc/systemd/system/xray@.service <<'XRAYUNIT'
@@ -799,6 +798,10 @@ fi
 mkdir -p /etc/systemd/system/xray@.service.d
 [ -f /etc/systemd/system/xray@.service.d/50-ejwatt-logs.conf ] || printf '[Service]\nLogsDirectory=xray\nLogsDirectoryMode=0750\n' > /etc/systemd/system/xray@.service.d/50-ejwatt-logs.conf
 systemctl daemon-reload
+
+# // ENABLE XRAY NONE TLS (template dah wujud)
+systemctl enable xray@none
+systemctl restart xray@none || true
 
 # // ENABLE XRAY WS TLS && NONE TLS
 systemctl enable xray@config
