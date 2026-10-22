@@ -8,9 +8,25 @@ Latest Xray Core
  <h2 align="center">AutoScript VPN <img src="https://img.shields.io/badge/Version-Stabil_2.0-purple.svg"></h2>
 
 
-<h2 align="center"> Supported Linux Distribution</h2>
-<p align="center"><img src="https://d33wubrfki0l68.cloudfront.net/5911c43be3b1da526ed609e9c55783d9d0f6b066/9858b/assets/img/debian-ubuntu-hover.png"width="400"></p>
-<p align="center"><img src="https://img.shields.io/static/v1?style=for-the-badge&logo=debian&label=Debian%2012&message=Bookworm&color=purple"> <img src="https://img.shields.io/static/v1?style=for-the-badge&logo=debian&label=Debian%2013&message=Trixie&color=purple"> <img src="https://img.shields.io/static/v1?style=for-the-badge&logo=ubuntu&label=Ubuntu%2022.04&message=LTS&color=red"> <img src="https://img.shields.io/static/v1?style=for-the-badge&logo=ubuntu&label=Ubuntu%2024.04&message=LTS&color=red">
+<h2 align="center">Supported Linux Distributions</h2>
+
+<p align="center">
+  <img src="https://d33wubrfki0l68.cloudfront.net/5911c43be3b1da526ed609e9c55783d9d0f6b066/9858b/assets/img/debian-ubuntu-hover.png" width="400" alt="Debian and Ubuntu">
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/static/v1?style=for-the-badge&logo=debian&label=Debian%2012&message=Bookworm&color=purple" alt="Debian 12">
+  <img src="https://img.shields.io/static/v1?style=for-the-badge&logo=debian&label=Debian%2013&message=Trixie&color=purple" alt="Debian 13">
+  <img src="https://img.shields.io/static/v1?style=for-the-badge&logo=ubuntu&label=Ubuntu%2022.04&message=LTS&color=red" alt="Ubuntu 22.04 LTS">
+  <img src="https://img.shields.io/static/v1?style=for-the-badge&logo=ubuntu&label=Ubuntu%2024.04&message=LTS&color=red" alt="Ubuntu 24.04 LTS">
+  <img src="https://img.shields.io/static/v1?style=for-the-badge&logo=ubuntu&label=Ubuntu%2026.04&message=LTS&color=red" alt="Ubuntu 26.04 LTS">
+  <img src="https://img.shields.io/static/v1?style=for-the-badge&logo=ubuntu&label=Ubuntu%2026.10&message=Latest&color=red" alt="Ubuntu 26.10 Latest">
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/static/v1?style=for-the-badge&logo=rockylinux&label=Rocky%20Linux%2010.2&message=Red%20Quartz&color=green" alt="Rocky Linux 10.2">
+  <img src="https://img.shields.io/static/v1?style=for-the-badge&logo=centos&label=CentOS%20Stream%2010&message=Coughlan&color=purple" alt="CentOS Stream 10">
+  <img src="https://img.shields.io/static/v1?style=for-the-badge&logo=almalinux&label=AlmaLinux%2010.2&message=Lavender%20Lion&color=blue" alt="AlmaLinux 10.2">
 </p>
 
 <p align="center">
@@ -27,19 +43,47 @@ The WARP menu in Menu 5 is based on the routing engine by Nilphreakz. I only mod
   
 
 
-## ♦️Update & Upgrade First Your VPS for Debian & Ubuntu♦️
+## ♦️Update & Install Required Packages♦️
 
-   ```html
-  apt update && apt install -y git curl wget
+### Ubuntu & Debian
 
-  ```
+```bash
+apt update && apt install -y git curl wget
+```
+
+### Rocky Linux, CentOS Stream & AlmaLinux
+
+```bash
+dnf update -y && dnf install -y git curl wget
+```
 
 ## ♦️INSTALLATION SCRIPT♦️
 
-  ```html
-  wget -O installer.sh https://raw.githubusercontent.com/ejaywattapak/grimjow/main/installer.sh && chmod +x installer.sh && sed -i -e 's/\r$//' installer.sh && ./installer.sh
+### Ubuntu & Debian
 
-  ```
+```bash
+wget -O installer.sh https://raw.githubusercontent.com/ejaywattapak/grimjow/main/installer.sh && chmod +x installer.sh && sed -i -e 's/\r$//' installer.sh && ./installer.sh
+```
+
+### Rocky Linux
+
+```bash
+wget -O installer.sh https://raw.githubusercontent.com/ejaywattapak/grimjow/main/installer.sh && chmod +x installer.sh && sed -i -e 's/\r$//' installer.sh && ./installer.sh
+```
+
+### CentOS Stream
+
+```bash
+wget -O installer.sh https://raw.githubusercontent.com/ejaywattapak/grimjow/main/installer.sh && chmod +x installer.sh && sed -i -e 's/\r$//' installer.sh && ./installer.sh
+```
+
+### AlmaLinux
+
+```bash
+wget -O installer.sh https://raw.githubusercontent.com/ejaywattapak/grimjow/main/installer.sh && chmod +x installer.sh && sed -i -e 's/\r$//' installer.sh && ./installer.sh
+```
+
+> **Note:** CentOS here refers to CentOS Stream. These commands document how to download and run the installer; the installer itself must support each distribution's package manager and system configuration.
 
 ## Description :
 
